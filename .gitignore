@@ -51,3 +51,12 @@ site-lisp/package/
 .cache/
 /forge-database.sqlite
 /transient
+/.trello
+/color-rg
+diary
+/emacs-libvterm
+/leetcode
+/nov-places
+/pyim
+/snails
+/request
