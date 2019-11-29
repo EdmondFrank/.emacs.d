@@ -4,7 +4,7 @@
 /network-security.data
 /.session
 /session.*
-/custom.el
+custom.el
 *.elc
 CVS
 .svn
