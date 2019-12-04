@@ -245,12 +245,12 @@
 (global-unset-key (kbd "C-s"))
 (global-set-key (kbd "C-s") 'swiper-isearch)
 
-(global-set-key (kbd "C-f") 'color-rg-search-project-with-type)
+(global-set-key (kbd "C-f") 'deadgrep)
 
 (global-set-key (kbd "<f2>") 'projectile-find-file)
 
 (global-unset-key (kbd "C-g"))
-(global-set-key (kbd "C-g") 'color-rg-search-symbol)
+(global-set-key (kbd "C-g") 'color-rg-search-symbol-in-project)
 
 (global-unset-key (kbd "C-r"))
 (global-set-key (kbd "C-r") 'color-rg-search-project-rails)
@@ -259,7 +259,7 @@
 (global-set-key (kbd "C-S-f") 'ripgrep-regexp)
 
 (require 'dumb-jump)
-(setq dumb-jump-prefer-searcher 'rg)
+(setq dumb-jump-force-searcher 'rg)
 (global-set-key (kbd "C-x j") 'dumb-jump-go)
 (global-set-key (kbd "C-x J") 'dumb-jump-back)
 
