@@ -183,9 +183,14 @@
 ;; Allow users to provide an optional "init-local" containing personal settings
 ;;----------------------------------------------------------------------------
 (require 'init-local nil t)
-
-
-
+(require 'init-pyim)
+(require 'init-doom-themes)
+(require 'init-dumb-jump)
+(require 'init-leetcode)
+(require 'init-undo-tree)
+(require 'init-reader)
+(require 'init-keybindings)
+(require 'init-functions)
 (provide 'init)
 
 ;; Local Variables:
@@ -194,31 +199,7 @@
 ;; End:
 ;;; init.el ends here
 
-;;custom theme
-(require 'doom-themes)
-
-;; Global settings (defaults)
-(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-      doom-themes-enable-italic t) ; if nil, italics is universally disabled
-
-;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
-;; may have their own settings.
-(load-theme 'doom-vibrant t)
-
-;; Enable flashing mode-line on errors
-(doom-themes-visual-bell-config)
-
-;; Enable custom neotree theme (all-the-icons must be installed!)
-(doom-themes-treemacs-config)
-
-;; Corrects (and improves) org-mode's native fontification.
-(doom-themes-org-config)
-
-;;custom dashboard
-;;(require 'dashboard)
-;;(dashboard-setup-startup-hook)
-
-;;custom require
+;;Custom settings
 
 ;; Wait for next update
 (add-to-list 'load-path (expand-file-name "snails" user-emacs-directory))
@@ -231,96 +212,7 @@
 (add-to-list 'company-backends 'company-tabnine)
 (add-hook 'after-init-hook 'global-company-mode)
 
-;;custom keybinding
-(global-unset-key (kbd "C-SPC"))
-(global-set-key (kbd "S-SPC") 'set-mark-command)
-
-(global-unset-key (kbd "C-x C-b"))
-(global-set-key (kbd "C-S-b") 'ibuffer)
-
-;; (global-unset-key (kbd "M-x"))
-;; (global-set-key (kbd "M-x") 'helm-M-x)
-
-;; Try use counsel-grep to replace swiper
-(global-unset-key (kbd "C-s"))
-(global-set-key (kbd "C-s") 'swiper-isearch)
-
-(global-set-key (kbd "C-f") 'deadgrep)
-
-(global-set-key (kbd "<f2>") 'projectile-find-file)
-
-(global-unset-key (kbd "C-g"))
-(global-set-key (kbd "C-g") 'color-rg-search-symbol-in-project)
-
-(global-unset-key (kbd "C-r"))
-(global-set-key (kbd "C-r") 'color-rg-search-project-rails)
-
-(require 'ripgrep)
-(global-set-key (kbd "C-S-f") 'ripgrep-regexp)
-
-(require 'dumb-jump)
-(setq dumb-jump-force-searcher 'rg)
-(global-set-key (kbd "C-x j") 'dumb-jump-go)
-(global-set-key (kbd "C-x J") 'dumb-jump-back)
-
-;; custom settings
-(set-default-font "-WQYF-文泉驿等宽微米黑-normal-normal-normal-*-17-*-*-*-*-0-iso10646-1")
-
-(require 'pyim)
-(require 'pyim-basedict) ; 拼音词库设置，五笔用户 *不需要* 此行设置
-(pyim-basedict-enable)   ; 拼音词库，五笔用户 *不需要* 此行设置
-(setq default-input-method "pyim")
-(global-set-key (kbd "C-\\") 'toggle-input-method)
-
-(require 'nov)
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-
-(require 'leetcode)
-(setq leetcode-prefer-language "ruby")
-
-;; 优化卡顿
-(defmacro k-time (&rest body)
-  "Measure and return the time it takes evaluating BODY."
-  `(let ((time (current-time)))
-     ,@body
-     (float-time (time-since time))))
-
-;; Set garbage collection threshold to 1GB.
-(setq gc-cons-threshold #x40000000)
-
-;; When idle for 15sec run the GC no matter what.
-(defvar k-gc-timer
-  (run-with-idle-timer 15 t
-                       (lambda ()
-                         (message "Garbage Collector has run for %.06fsec"
-                                  (k-time (garbage-collect))))))
-(defun put-file-name-on-clipboard ()
-  "Put the current file name on the clipboard"
-  (interactive)
-  (let ((filename (if (equal major-mode 'dired-mode)
-                      default-directory
-                    (buffer-file-name))))
-    (when filename
-      (with-temp-buffer
-        (insert filename)
-        (clipboard-kill-region (point-min) (point-max)))
-      (message filename))))
-
 ;; (setq package-check-signature nil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; undo tree mode                                                         ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;turn on everywhere
-;; install undo-tree
-(require 'undo-tree)
-(global-undo-tree-mode 1)
-;; make ctrl-z undo
-(global-set-key (kbd "C-z") 'undo)
-;; make ctrl-Z redo
-(defalias 'redo 'undo-tree-redo)
-(global-set-key (kbd "C-S-z") 'redo)
-(put 'list-timers 'disabled nil)
 ;; ------------------------------------------------------------
 ;; set multi-term
 ;; ------------------------------------------------------------
