@@ -189,6 +189,7 @@
 (require 'init-leetcode)
 (require 'init-undo-tree)
 (require 'init-reader)
+(require 'init-noter)
 (require 'init-keybindings)
 (require 'init-functions)
 (provide 'init)
@@ -223,3 +224,5 @@
 (global-set-key (kbd "C-x t") 'helm-mt)
 ;; (add-to-list 'load-path (expand-file-name "emacs-libvterm" user-emacs-directory))
 ;; (require 'vterm)
+(custom-set-variables
+ '(eww-search-prefix "https://so.mezw.com/Search?wd="))
