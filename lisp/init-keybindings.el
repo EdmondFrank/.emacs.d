@@ -25,8 +25,8 @@
 (global-set-key (kbd "C-r") 'color-rg-search-project-rails)
 
 (global-set-key (kbd "C-S-f") 'ripgrep-regexp)
-(global-set-key (kbd "C-x j") 'dumb-jump-go)
-(global-set-key (kbd "C-x J") 'dumb-jump-back)
+(global-set-key (kbd "C-.") 'dumb-jump-go)
+(global-set-key (kbd "C-,") 'dumb-jump-back)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; undo tree mode                                                         ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

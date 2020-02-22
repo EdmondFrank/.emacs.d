@@ -21,15 +21,21 @@
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
 
+(let (;; 加载的时候临时增大`gc-cons-threshold'以加速启动速度。
+      (gc-cons-threshold most-positive-fixnum)
+      ;; 清空避免加载远程文件的时候分析文件。
+      (file-name-handler-alist nil))
+
+    ;; Emacs配置文件内容写到下面.
 ;;----------------------------------------------------------------------------
 ;; Adjust garbage collection thresholds during startup, and thereafter
 ;;----------------------------------------------------------------------------
-(let ((normal-gc-cons-threshold (* 20 1024 1024))
-      (init-gc-cons-threshold (* 128 1024 1024)))
-  (setq gc-cons-threshold init-gc-cons-threshold)
-  (add-hook 'emacs-startup-hook
-            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
-
+;; (let ((normal-gc-cons-threshold (* 20 1024 1024))
+;;       (init-gc-cons-threshold (* 128 1024 1024)))
+;;   (setq gc-cons-threshold init-gc-cons-threshold)
+;;   (add-hook 'emacs-startup-hook
+;;             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+;;
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
@@ -202,25 +208,27 @@
 ;;Custom settings
 
 ;; Wait for next update
-(add-to-list 'load-path (expand-file-name "snails" user-emacs-directory))
-(require 'snails)
+;; (add-to-list 'load-path (expand-file-name "snails" user-emacs-directory))
+;; (require 'snails)
+;; (add-to-list 'load-path (expand-file-name "emacs-application-framework" user-emacs-directory))
+;; (require 'eaf)
 (add-to-list 'load-path (expand-file-name "color-rg" user-emacs-directory))
 (require 'color-rg)
 
-;; smart auto complete
-(require 'company-tabnine)
-(add-to-list 'company-backends 'company-tabnine)
+;; smart auto complete(too slow)
+;; (require 'company-tabnine)
+;; (add-to-list 'company-backends 'company-tabnine)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; (setq package-check-signature nil)
 ;; ------------------------------------------------------------
 ;; set multi-term
 ;; ------------------------------------------------------------
-(require 'multi-term)
-(setq multi-term-program "/usr/bin/zsh")
+;; (require 'multi-term)
+;; (setq multi-term-program "/usr/bin/zsh")
 ;; Use Emacs terminfo, not system terminfo
-(setq system-uses-terminfo nil)
-(global-set-key (kbd "C-x t") 'helm-mt)
+;; (setq system-uses-terminfo nil)
+;; (global-set-key (kbd "C-x t") 'helm-mt)
 ;; (add-to-list 'load-path (expand-file-name "emacs-libvterm" user-emacs-directory))
 ;; (require 'vterm)
 (custom-set-variables
@@ -229,3 +237,4 @@
 (display-time-mode 1) ;; 常显
 (setq display-time-24hr-format t) ;;格式
 (setq display-time-day-and-date t) ;;显示时间、星期、日期
+);;gc-cons-threshold
