@@ -213,8 +213,8 @@
 ;; (require 'snails)
 ;; (add-to-list 'load-path (expand-file-name "emacs-application-framework" user-emacs-directory))
 ;; (require 'eaf)
-(add-to-list 'load-path (expand-file-name "color-rg" user-emacs-directory))
-(require 'color-rg)
+;; (add-to-list 'load-path (expand-file-name "color-rg" user-emacs-directory))
+;; (require 'color-rg)
 
 ;; smart auto complete(too slow)
 ;; (require 'company-tabnine)

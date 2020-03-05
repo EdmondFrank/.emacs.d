@@ -18,12 +18,6 @@
 
 (global-set-key (kbd "<f2>") 'projectile-find-file)
 
-(global-unset-key (kbd "C-g"))
-(global-set-key (kbd "C-g") 'color-rg-search-symbol-in-project)
-
-(global-unset-key (kbd "C-r"))
-(global-set-key (kbd "C-r") 'color-rg-search-project-rails)
-
 (global-set-key (kbd "C-S-f") 'ripgrep-regexp)
 (global-set-key (kbd "C-.") 'dumb-jump-go)
 (global-set-key (kbd "C-,") 'dumb-jump-back)
