@@ -196,6 +196,7 @@
 (require 'init-reader)
 (require 'init-noter)
 (require 'init-keybindings)
+(require 'init-sort)
 (require 'init-functions)
 (provide 'init)
 
