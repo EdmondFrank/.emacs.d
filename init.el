@@ -232,8 +232,6 @@
 ;; (global-set-key (kbd "C-x t") 'helm-mt)
 ;; (add-to-list 'load-path (expand-file-name "emacs-libvterm" user-emacs-directory))
 ;; (require 'vterm)
-(custom-set-variables
- '(eww-search-prefix "https://so.mezw.com/Search?wd="))
 
 (display-time-mode 1) ;; 常显
 (setq display-time-24hr-format t) ;;格式
