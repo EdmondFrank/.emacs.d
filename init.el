@@ -197,6 +197,7 @@
 (require 'init-noter)
 (require 'init-keybindings)
 (require 'init-sort)
+(require 'init-tags)
 (require 'init-functions)
 (provide 'init)
 
