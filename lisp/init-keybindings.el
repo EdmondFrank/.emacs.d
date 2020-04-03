@@ -18,7 +18,7 @@
 
 (global-set-key (kbd "<f2>") 'projectile-find-file)
 
-(global-set-key (kbd "C-S-f") 'ripgrep-regexp)
+(global-set-key (kbd "C-S-f") 'xref-find-references)
 (global-set-key (kbd "C-.") 'dumb-jump-go)
 (global-set-key (kbd "C-,") 'dumb-jump-back)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
