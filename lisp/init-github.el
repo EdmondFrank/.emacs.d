@@ -11,6 +11,7 @@
 (maybe-require-package 'github-clone)
 (maybe-require-package 'forge)
 (maybe-require-package 'github-review)
+(maybe-require-package 'github-explorer)
 
 (provide 'init-github)
 ;;; init-github.el ends here
