@@ -14,7 +14,8 @@ Selectively runs either `after-make-console-frame-hooks' or
   (with-selected-frame frame
     (run-hooks (if window-system
                    'after-make-window-system-frame-hooks
-                 'after-make-console-frame-hooks))))
+                 'after-make-console-frame-hooks))
+    (set-default-font "-WQYF-文泉驿等宽微米黑-normal-normal-normal-*-17-*-*-*-*-0-iso10646-1")))
 
 (add-hook 'after-make-frame-functions 'run-after-make-frame-hooks)
 

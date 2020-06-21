@@ -21,6 +21,6 @@
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config))
-(set-default-font "-WQYF-文泉驿等宽微米黑-normal-normal-normal-*-17-*-*-*-*-0-iso10646-1")
+
 (provide 'init-doom-themes)
 ;;; init-doom-themes.el ends here
