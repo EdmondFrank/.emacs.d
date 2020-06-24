@@ -194,6 +194,7 @@
 (require 'init-local nil t)
 (require 'init-pyim)
 (require 'init-doom-themes)
+(require 'init-sidebar)
 (require 'init-dumb-jump)
 (require 'init-leetcode)
 (require 'init-undo-tree)
