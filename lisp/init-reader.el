@@ -6,5 +6,6 @@
 (require-package 'pdf-tools)
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/private/inherit-org"))
 (require 'inherit-org)
+(require 'go-translate)
 (provide 'init-reader)
 ;;; init-reader.el ends here

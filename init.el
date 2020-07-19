@@ -241,7 +241,9 @@
 ;; (global-set-key (kbd "C-x t") 'helm-mt)
 ;; (add-to-list 'load-path (expand-file-name "emacs-libvterm" user-emacs-directory))
 ;; (require 'vterm)
-
+(setq go-translate-base-url "https://translate.google.cn")
+(setq go-translate-token-current (cons 430675 2721866130))
+(setq go-translate-local-language "zh-CN")
 (display-time-mode 1) ;; 常显
 (setq display-time-24hr-format t) ;;格式
 (setq display-time-day-and-date t) ;;显示时间、星期、日期
