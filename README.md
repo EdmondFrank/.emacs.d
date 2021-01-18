@@ -6,15 +6,16 @@ Emacs itself comes with support for many programming languages. This
 config adds improved defaults and extended support for the following, listed
 in the approximate order of how much I use them, from most to least:
 
-* Haskell / Purescript / Elm
+* Haskell / Purescript / Elm / OCaml
 * Ruby / Ruby on Rails
+* SQL
 * CSS / LESS / SASS / SCSS
 * Javascript / Typescript / Coffeescript
 * HTML / HAML / Markdown / Textile / ERB
-* Rust
-* Python
-* Clojure (with Cider and nRepl)
 * Common Lisp (with Slime)
+* Python
+* Rust
+* Clojure (with Cider and nRepl)
 * PHP
 * Erlang
 
@@ -24,6 +25,11 @@ In particular, there's a nice config for *autocompletion* with
 ## Screenshots
 
 ![demo.png](https://i.loli.net/2019/11/29/JZqBvFGQDbRYT1w.png)
+The config should run on Emacs 25.1 or greater and is designed to
+degrade smoothly - see the CI build - but note that much newer
+versions are required for an increasing number of key packages, so to
+get full functionality you should use the latest Emacs version
+available to you.
 
 
 ## Supported Emacs versions
