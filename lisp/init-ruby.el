@@ -108,6 +108,12 @@
   (mmm-add-mode-ext-class mode "\\.js\\.erb\\'" 'erb))
 
 
+
+;;; yafolding
+(require 'yafolding)
+(add-hook 'ruby-mode-hook 'yafolding-mode)
+(global-set-key (kbd "M-RET")   'yafolding-toggle-element)
+
 ;;----------------------------------------------------------------------------
 ;; Ruby - my convention for heredocs containing SQL
 ;;----------------------------------------------------------------------------
