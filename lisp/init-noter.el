@@ -5,7 +5,8 @@
 (require-package 'deft)
 (require-package 'org-brain)
 (require-package 'org-mind-map)
-(setq org-brain-path "~/.deft")
+(setq org-brain-path "~/backup")
+(setq deft-recursive t)
 ;; Global settings (defaults)
 (setq org-id-track-globally t)
 (setq org-id-locations-file "~/.deft/.org-id-locations")
@@ -16,7 +17,8 @@
 (setq org-brain-title-max-length 12)
 (setq org-brain-include-file-entries nil
       org-brain-file-entries-use-title nil)
-(setq deft-extensions '("txt" "tex" "org"))
+(setq deft-extensions '("txt" "org" "md" "tex"))
+(setq deft-directory org-brain-path)
 (defun org-brain-deft ()
   "Use `deft' for files in `org-brain-path'."
   (interactive)
