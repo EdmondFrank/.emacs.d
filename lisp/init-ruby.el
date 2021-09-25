@@ -109,14 +109,7 @@
 
 
 
-;;; yafolding
-(require 'yafolding)
-(add-hook 'ruby-mode-hook 'yafolding-mode)
-(global-set-key (kbd "M-RET")   'yafolding-toggle-element)
-
-;;----------------------------------------------------------------------------
 ;; Ruby - my convention for heredocs containing SQL
-;;----------------------------------------------------------------------------
 
 ;; (require-package 'mmm-mode)
 ;; (eval-after-load 'mmm-mode
