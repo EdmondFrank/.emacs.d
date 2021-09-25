@@ -380,6 +380,7 @@ typical word processor."
      (sql . t)
      (sqlite . t))))
 
+(setq org-agenda-files (quote ("~/GTD/todos.org")))
 
 (provide 'init-org)
 ;;; init-org.el ends here

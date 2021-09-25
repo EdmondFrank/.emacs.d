@@ -50,7 +50,7 @@
 ;;                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
-(package-initialize) ;; You might already have this line
+(setq package-check-signature nil)
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-preload-local.el"
@@ -105,7 +105,7 @@
 (require 'init-javascript)
 (require 'init-php)
 (require 'init-org)
-(require 'init-roam)
+(require 'init-trello)
 (require 'init-nxml)
 (require 'init-html)
 (require 'init-css)
@@ -205,7 +205,6 @@
 (require 'init-noter)
 (require 'init-keybindings)
 (require 'init-sort)
-(require 'init-tags)
 (require 'init-functions)
 (provide 'init)
 
@@ -228,6 +227,7 @@
 ;; smart auto complete(too slow)
 ;; (require 'company-tabnine)
 ;; (add-to-list 'company-backends 'company-tabnine)
+(require-package 'auto-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; (setq package-check-signature nil)
