@@ -230,6 +230,8 @@
 (require-package 'auto-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 
+(request-package 'yafolding)
+(add-hook 'prog-mode-hook (lambda () (yafolding-mode)))
 ;; (setq package-check-signature nil)
 ;; ------------------------------------------------------------
 ;; set multi-term
