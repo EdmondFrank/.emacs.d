@@ -4,6 +4,7 @@
 
 ;;; Basic ruby setup
 (require-package 'ruby-hash-syntax)
+(require-package 'eglot)
 
 (add-auto-mode 'ruby-mode
                "\\.rxml\\'"
@@ -16,6 +17,7 @@
  ruby-insert-encoding-magic-comment nil)
 
 (add-hook 'ruby-mode-hook 'subword-mode)
+(add-hook 'ruby-mode-hook 'eglot-ensure)
 
 (with-eval-after-load 'page-break-lines
   (add-to-list 'page-break-lines-modes 'ruby-mode))
