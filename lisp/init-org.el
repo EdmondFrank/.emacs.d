@@ -305,10 +305,10 @@ typical word processor."
 (when (and *is-a-mac* (file-directory-p "/Applications/org-clock-statusbar.app"))
   (add-hook 'org-clock-in-hook
             (lambda () (call-process "/usr/bin/osascript" nil 0 nil "-e"
-                                (concat "tell application \"org-clock-statusbar\" to clock in \"" org-clock-current-task "\""))))
+                                     (concat "tell application \"org-clock-statusbar\" to clock in \"" org-clock-current-task "\""))))
   (add-hook 'org-clock-out-hook
             (lambda () (call-process "/usr/bin/osascript" nil 0 nil "-e"
-                                "tell application \"org-clock-statusbar\" to clock out"))))
+                                     "tell application \"org-clock-statusbar\" to clock out"))))
 
 
 
@@ -381,6 +381,23 @@ typical word processor."
      (sqlite . t))))
 
 (setq org-agenda-files (quote ("~/GTD/todos.org")))
+
+(require-package 'org-present)
+(with-eval-after-load "org-present"
+  ;; Set how large the characters should be
+  (setq org-present-text-scale 2.5)
+  (add-hook 'org-present-mode-hook
+            (lambda ()
+              (org-present-big)
+              (org-display-inline-images)
+              (org-present-hide-cursor)
+              (org-present-read-only)))
+  (add-hook 'org-present-mode-quit-hook
+            (lambda ()
+              (org-present-small)
+              (org-remove-inline-images)
+              (org-present-show-cursor)
+              (org-present-read-write))))
 
 (provide 'init-org)
 ;;; init-org.el ends here
