@@ -233,6 +233,8 @@
 
 (require-package 'yafolding)
 (add-hook 'prog-mode-hook (lambda () (yafolding-mode)))
+
+(require-package 'vterm)
 ;; (setq package-check-signature nil)
 ;; ------------------------------------------------------------
 ;; set multi-term
