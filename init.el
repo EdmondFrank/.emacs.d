@@ -117,6 +117,7 @@
 (require 'init-elm)
 (require 'init-purescript)
 (require 'init-ruby)
+(require 'init-elixir)
 (require 'init-go)
 (require 'init-rails)
 (require 'init-sql)
