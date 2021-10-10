@@ -26,6 +26,7 @@
   (maybe-require-package 'grab-mac-link))
 
 (maybe-require-package 'org-cliplink)
+(maybe-require-package 'org-download)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -385,7 +386,7 @@ typical word processor."
 (require-package 'org-present)
 (with-eval-after-load "org-present"
   ;; Set how large the characters should be
-  (setq org-present-text-scale 2.5)
+  (setq org-present-text-scale 3)
   (add-hook 'org-present-mode-hook
             (lambda ()
               (org-present-big)
@@ -398,6 +399,7 @@ typical word processor."
               (org-remove-inline-images)
               (org-present-show-cursor)
               (org-present-read-write))))
-
+;; Drag-and-drop to `dired`
+(add-hook 'dired-mode-hook 'org-download-enable)
 (provide 'init-org)
 ;;; init-org.el ends here
