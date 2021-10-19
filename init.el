@@ -209,6 +209,7 @@
 (require 'init-keybindings)
 (require 'init-sort)
 (require 'init-functions)
+(require 'init-citre)
 (provide 'init)
 
 ;; Local Variables:
