@@ -40,7 +40,8 @@
         (call-interactively 'ruby-load-file)
       (save-some-buffers)
       (ruby-load-file buffer-file-name)))
-  (define-key inf-ruby-minor-mode-map [remap ruby-load-file] 'sanityinc/ruby-load-file))
+  (define-key inf-ruby-minor-mode-map [remap ruby-load-file] 'sanityinc/ruby-load-file)
+  (advice-add 'inf-ruby-console-auto :before #'rvm-activate-corresponding-ruby))
 
 
 
