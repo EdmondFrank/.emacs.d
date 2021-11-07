@@ -7,13 +7,16 @@
 ;;; Code:
 
 (use-package elixir-mode
-            :config
-            (use-package alchemist
-                         :hook ((elixir-mode . alchemist-mode)
-                                (elixir-mode . alchemist-phoenix-mode)))
+  :config
+  (use-package alchemist
+    :hook ((elixir-mode . alchemist-mode)
+           (elixir-mode . alchemist-phoenix-mode)))
+  (use-package eglot
+    :hook ((elixir-mode . eglot-ensure))
+    :init (add-to-list 'exec-path (expand-file-name "elixir-ls-1.12/release" user-emacs-directory)))
 
-            (use-package flycheck-credo
-                         :after flycheck
-                         :init (flycheck-credo-setup)))
+  (use-package flycheck-credo
+    :after flycheck
+    :init (flycheck-credo-setup)))
 (provide 'init-elixir)
 ;;; init-elixir.el ends here
