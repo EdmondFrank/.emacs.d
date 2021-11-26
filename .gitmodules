@@ -1,0 +1,3 @@
+[submodule "go-translate"]
+	path = go-translate
+	url = https://github.com/lorniu/go-translate.git
