@@ -210,6 +210,7 @@
 (require 'init-sort)
 (require 'init-functions)
 (require 'init-citre)
+(require 'init-eaf)
 (provide 'init)
 
 ;; Local Variables:
