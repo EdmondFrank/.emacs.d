@@ -333,6 +333,8 @@ typical word processor."
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
 
 
+(require-package 'org-modern)
+
 ;; ;; Show iCal calendars in the org agenda
 ;; (when (and *is-a-mac* (require 'org-mac-iCal nil t))
 ;;   (setq org-agenda-include-diary t
@@ -405,5 +407,6 @@ typical word processor."
               (org-present-read-write))))
 ;; Drag-and-drop to `dired`
 (add-hook 'dired-mode-hook 'org-download-enable)
+(add-hook 'org-mode-hook 'org-modern-mode)
 (provide 'init-org)
 ;;; init-org.el ends here
