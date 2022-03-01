@@ -28,5 +28,12 @@
         (insert filename)
         (clipboard-kill-region (point-min) (point-max)))
       (message filename))))
+(defun copy-diff-region ()
+  "Copy diff region without + or - markers."
+  (interactive)
+  (deactivate-mark)
+  (let ((text (buffer-substring-no-properties
+               (region-beginning) (region-end))))
+    (kill-new (replace-regexp-in-string "^[\\+\\-]" "" text))))
 (provide 'init-functions)
 ;;; init-functions.el ends here
