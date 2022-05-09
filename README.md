@@ -20,7 +20,10 @@ in the approximate order of how much I use them, from most to least:
 * Erlang
 
 In particular, there's a nice config for *autocompletion* with
-[TabNine](https://tabnine.com/) TabNine uses deep learning to help you write code faster.
+[company](https://company-mode.github.io/), and
+`flymake` (re-using backends from [flycheck](http://www.flycheck.org))
+is used to immediately highlight syntax errors in Ruby, Python,
+Javascript, Haskell and a number of other languages.
 
 ## Screenshots
 
