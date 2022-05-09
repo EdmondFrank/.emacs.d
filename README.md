@@ -18,6 +18,7 @@ in the approximate order of how much I use them, from most to least:
 * Clojure (with Cider and nRepl)
 * PHP
 * Erlang
+* Elixir
 
 In particular, there's a nice config for *autocompletion* with
 [company](https://company-mode.github.io/), and
