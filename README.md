@@ -27,6 +27,8 @@ Javascript, Haskell and a number of other languages.
 
 ## Screenshots
 
+LSP support is provided using `eglot`.
+
 ![demo.png](https://i.loli.net/2019/11/29/JZqBvFGQDbRYT1w.png)
 The config should run on Emacs 25.1 or greater and is designed to
 degrade smoothly - see the CI build - but note that much newer
