@@ -35,5 +35,16 @@
   (let ((text (buffer-substring-no-properties
                (region-beginning) (region-end))))
     (kill-new (replace-regexp-in-string "^[\\+\\-]" "" text))))
+
+(require 'ansi-color)
+(defun display-ansi-colors ()
+  (interactive)
+  (ansi-color-apply-on-region (point-min) (point-max)))
+
+(defun load-org-babel-executor ()
+  (interactive)
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((shell . t))))
+
 (provide 'init-functions)
 ;;; init-functions.el ends here
