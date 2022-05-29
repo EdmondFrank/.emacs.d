@@ -76,7 +76,6 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
-(require 'init-flymake)
 (require 'init-eglot)
 
 (require 'init-recentf)
@@ -230,18 +229,36 @@
 ;; (add-to-list 'load-path (expand-file-name "color-rg" user-emacs-directory))
 ;; (require 'color-rg)
 
-;; smart auto complete(too slow)
-;; (require 'company-tabnine)
-;; (add-to-list 'company-backends 'company-tabnine)
 (require-package 'auto-complete)
-(add-hook 'after-init-hook 'global-company-mode)
 
+(add-to-list 'load-path (expand-file-name "site-lisp/lsp-bridge" user-emacs-directory))
+(setq lsp-bridge-completion-provider 'corfu)
+(require 'corfu)
+(require 'corfu-info)
+(require 'corfu-history)
+(require 'lsp-bridge-icon)        ;; show icons for completion items, optional
+(require 'lsp-bridge-orderless)   ;; make lsp-bridge support fuzzy match, optional
+(global-corfu-mode)
+(corfu-history-mode t)
+(global-lsp-bridge-mode)
+(when (> (frame-pixel-width) 3000) (custom-set-faces '(corfu-default ((t (:height 1.3))))))  ;; adjust default font height when running in HiDPI screen.
+
+;; For Xref support
+(add-hook 'lsp-bridge-mode-hook
+          (lambda ()
+            (add-hook 'xref-backend-functions #'lsp-bridge-xref-backend nil t)
+            (define-key lsp-bridge-mode-map (kbd "C-j") 'lsp-bridge-popup-documentation-scroll-up)
+            (define-key lsp-bridge-mode-map (kbd "C-k") 'lsp-bridge-popup-documentation-scroll-down)))
+
+;; (setq lsp-bridge-enable-log t)
 (require-package 'yafolding)
 (add-hook 'prog-mode-hook (lambda () (yafolding-mode)))
 
 (require-package 'vterm)
 
+(setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
 (display-time-mode 1) ;; 常显
 (setq display-time-24hr-format t) ;;格式
 (setq display-time-day-and-date t) ;;显示时间、星期、日期
 );;gc-cons-threshold
+(put 'scroll-left 'disabled nil)

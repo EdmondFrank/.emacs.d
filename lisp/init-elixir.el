@@ -13,10 +13,6 @@
            (elixir-mode . alchemist-phoenix-mode)))
   (use-package eglot
     :hook ((elixir-mode . eglot-ensure))
-    :init (add-to-list 'exec-path (expand-file-name "elixir-ls-1.13" user-emacs-directory)))
-
-  (use-package flycheck-credo
-    :after flycheck
-    :init (flycheck-credo-setup)))
+    :init (add-to-list 'exec-path (expand-file-name "elixir-ls-1.13" user-emacs-directory))))
 (provide 'init-elixir)
 ;;; init-elixir.el ends here

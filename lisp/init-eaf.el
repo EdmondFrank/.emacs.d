@@ -14,8 +14,10 @@
 (require 'eaf-image-viewer)
 (require 'eaf-mindmap)
 (require 'eaf-file-manager)
+(require 'eaf-jupyter)
 (require 'eaf-pdf-viewer)
 (require 'eaf-browser)
+(require 'eaf-git)
 
 (setq eaf-proxy-type "http")
 (setq eaf-proxy-host "127.0.0.1")
