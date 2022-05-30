@@ -83,6 +83,7 @@
 (require 'init-ivy)
 (require 'init-hippie-expand)
 (require 'init-company)
+(require 'init-corfu)
 (require 'init-windows)
 (require 'init-sessions)
 (require 'init-mmm)
@@ -211,6 +212,7 @@
 (require 'init-functions)
 (require 'init-citre)
 (require 'init-eaf)
+(require 'init-lsp-bridge)
 (provide 'init)
 
 ;; Local Variables:
@@ -230,29 +232,6 @@
 ;; (require 'color-rg)
 
 (require-package 'auto-complete)
-
-(add-to-list 'load-path (expand-file-name "site-lisp/lsp-bridge" user-emacs-directory))
-(setq lsp-bridge-completion-provider 'corfu)
-(require 'corfu)
-(require 'corfu-info)
-(require 'corfu-history)
-(require 'lsp-bridge-icon)        ;; show icons for completion items, optional
-(require 'lsp-bridge-orderless)   ;; make lsp-bridge support fuzzy match, optional
-(global-corfu-mode)
-(corfu-history-mode t)
-(global-lsp-bridge-mode)
-(when (> (frame-pixel-width) 3000) (custom-set-faces '(corfu-default ((t (:height 1.3))))))  ;; adjust default font height when running in HiDPI screen.
-
-;; For Xref support
-(add-hook 'lsp-bridge-mode-hook
-          (lambda ()
-            (add-hook 'xref-backend-functions #'lsp-bridge-xref-backend nil t)
-            (define-key lsp-bridge-mode-map (kbd "C-j") 'lsp-bridge-popup-documentation-scroll-up)
-            (define-key lsp-bridge-mode-map (kbd "C-k") 'lsp-bridge-popup-documentation-scroll-down)))
-
-;; (setq lsp-bridge-enable-log t)
-(require-package 'yafolding)
-(add-hook 'prog-mode-hook (lambda () (yafolding-mode)))
 
 (require-package 'vterm)
 
