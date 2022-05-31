@@ -16,7 +16,6 @@
 
 (add-hook 'lsp-bridge-mode-hook
           (lambda ()
-            (add-hook 'xref-backend-functions #'lsp-bridge-xref-backend nil t)
             (define-key lsp-bridge-mode-map (kbd "C-j") 'lsp-bridge-popup-documentation-scroll-up)
             (define-key lsp-bridge-mode-map (kbd "C-k") 'lsp-bridge-popup-documentation-scroll-down)))
 

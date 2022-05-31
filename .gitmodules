@@ -10,3 +10,6 @@
 [submodule "site-lisp/corfu-doc"]
 	path = site-lisp/corfu-doc
 	url = git@github.com:galeo/corfu-doc.git
+[submodule "site-lisp/citre"]
+	path = site-lisp/citre
+	url = git@github.com:universal-ctags/citre.git
