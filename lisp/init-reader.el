@@ -4,8 +4,6 @@
 (require-package 'nov)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 (add-to-list 'load-path (expand-file-name "go-translate" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/private/inherit-org"))
-(require 'inherit-org)
 (require 'go-translate)
 (setq gts-translate-list '(("en" "zh") ("zh" "en")))
 (setq gts-default-translator

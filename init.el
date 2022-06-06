@@ -223,13 +223,7 @@
 
 ;;Custom settings
 
-;; Wait for next update
-;; (add-to-list 'load-path (expand-file-name "snails" user-emacs-directory))
-;; (require 'snails)
-;; (add-to-list 'load-path (expand-file-name "emacs-application-framework" user-emacs-directory))
-;; (require 'eaf)
-;; (add-to-list 'load-path (expand-file-name "color-rg" user-emacs-directory))
-;; (require 'color-rg)
+(require-package 'tramp)
 
 (require-package 'auto-complete)
 
