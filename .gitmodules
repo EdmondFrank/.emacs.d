@@ -13,3 +13,6 @@
 [submodule "site-lisp/citre"]
 	path = site-lisp/citre
 	url = git@github.com:universal-ctags/citre.git
+[submodule "site-lisp/kubel"]
+	path = site-lisp/kubel
+	url = git@github.com:abrochard/kubel.git

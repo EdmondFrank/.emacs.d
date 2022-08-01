@@ -229,6 +229,10 @@
 
 (require-package 'vterm)
 
+
+(add-to-list 'load-path (expand-file-name "site-lisp/kubel" user-emacs-directory))
+(require 'kubel)
+
 (setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
 (display-time-mode 1) ;; 常显
 (setq display-time-24hr-format t) ;;格式

@@ -8,12 +8,9 @@
 (add-to-list 'load-path (expand-file-name "site-lisp/lsp-bridge" user-emacs-directory))
 
 (require 'lsp-bridge)
-(require 'corfu-history)
-(require 'lsp-bridge-orderless)   ;; make lsp-bridge support fuzzy match, optional
-(corfu-history-mode t)
-(global-lsp-bridge-mode)
-(when (> (frame-pixel-width) 3000) (custom-set-faces '(corfu-default ((t (:height 1.3))))))  ;; adjust default font height when running in HiDPI screen.
 
+(global-lsp-bridge-mode)
+(setq acm-enable-icon nil)
 (add-hook 'lsp-bridge-mode-hook
           (lambda ()
             (define-key lsp-bridge-mode-map (kbd "C-j") 'lsp-bridge-popup-documentation-scroll-up)
