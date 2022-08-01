@@ -82,7 +82,6 @@
 (require 'init-smex)
 (require 'init-ivy)
 (require 'init-hippie-expand)
-(require 'init-company)
 (require 'init-corfu)
 (require 'init-windows)
 (require 'init-sessions)
