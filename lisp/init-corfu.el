@@ -8,11 +8,11 @@
 (add-to-list 'load-path (expand-file-name "site-lisp/corfu-doc" user-emacs-directory))
 
 (setq tab-always-indent 'complete)
-(require-package 'orderless)
-(with-eval-after-load 'vertico
-  (require 'orderless))
-(setq completion-styles '(orderless basic)
-      completion-category-defaults nil
+(when (maybe-require-package 'orderless)
+  (with-eval-after-load 'vertico
+    (require 'orderless)
+    (setq completion-styles '(orderless basic))))
+(setq completion-category-defaults nil
       completion-category-overrides nil)
 (setq completion-cycle-threshold 4)
 
