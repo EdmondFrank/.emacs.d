@@ -40,7 +40,12 @@ available to you.
 
 ## Supported Emacs versions
 
-The config should run on Emacs 25 or greater
+Use the latest released Emacs version available to you. The author
+typically uses the latest stable version.
+
+The config should run on Emacs 25.1 or greater and is designed to
+degrade smoothly - see the CI build - but even basic enhancements
+like completion may be unavailable if your Emacs is too old.
 
 ## Installation
 
