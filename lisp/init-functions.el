@@ -1,5 +1,7 @@
 ;;; init-functions.el --- customize functions -*- lexical-binding: t -*-
 ;;; Commentary:
+(require 'org-element)
+
 ;;; Code:
 ;; 优化卡顿
 (defmacro k-time (&rest body)
@@ -18,7 +20,7 @@
                          (message "Garbage Collector has run for %.06fsec"
                                   (k-time (garbage-collect))))))
 (defun put-file-name-on-clipboard ()
-  "Put the current file name on the clipboard"
+  "Put the current file name on the clipboard."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
@@ -38,13 +40,22 @@
 
 (require 'ansi-color)
 (defun display-ansi-colors ()
+  "Display ansi color characters."
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
 
 (defun load-org-babel-executor ()
+  "Org babel load languages runtime."
   (interactive)
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((shell . t))))
+(defun org-copy-link-url ()
+  "Extract URL from `org-mode link and add it to kill ring."
+  (interactive)
+  (kill-new (org-element-property :raw-link (org-element-context)))
+  (message "Copied Successfully !"))
+
+(define-key org-mode-map (kbd "C-x C-l") 'org-copy-link-url)
 
 (provide 'init-functions)
 ;;; init-functions.el ends here
