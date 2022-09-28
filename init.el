@@ -76,6 +76,7 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
+(require 'init-flymake)
 (require 'init-eglot)
 
 (require 'init-recentf)
@@ -213,7 +214,6 @@
 (require 'init-eaf)
 (require 'init-lsp-bridge)
 (provide 'init)
-
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
