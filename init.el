@@ -228,6 +228,7 @@
 
 (require-package 'vterm)
 
+(global-auto-complete-mode)
 
 (add-to-list 'load-path (expand-file-name "site-lisp/kubel" user-emacs-directory))
 (require 'kubel)
@@ -236,5 +237,10 @@
 (display-time-mode 1) ;; 常显
 (setq display-time-24hr-format t) ;;格式
 (setq display-time-day-and-date t) ;;显示时间、星期、日期
-);;gc-cons-threshold
+(require 'server)
+(or (server-running-p)
+    (server-start))
 (put 'scroll-left 'disabled nil)
+(setq tramp-auto-save-directory "~/tmp/tramp/")
+(setq tramp-chunksize 2000)
+);;gc-cons-threshold

@@ -11,7 +11,6 @@
 (require 'eaf-video-player)
 (require 'eaf-org-previewer)
 (require 'eaf-markdown-previewer)
-(require 'eaf-image-viewer)
 (require 'eaf-mindmap)
 (require 'eaf-file-manager)
 (require 'eaf-jupyter)
