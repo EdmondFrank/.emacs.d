@@ -237,10 +237,12 @@
 (display-time-mode 1) ;; 常显
 (setq display-time-24hr-format t) ;;格式
 (setq display-time-day-and-date t) ;;显示时间、星期、日期
-(require 'server)
-(or (server-running-p)
-    (server-start))
+(setq recentf-max-menu-items 250)
 (put 'scroll-left 'disabled nil)
+(setq org-startup-folded t)
 (setq tramp-auto-save-directory "~/tmp/tramp/")
-(setq tramp-chunksize 2000)
+(setq tramp-chunksize 1024)
+(setq remote-file-name-inhibit-cache nil)
+(setq ivy-rich-parse-remote-buffer nil)
+(setq vc-handled-backends '(Git))
 );;gc-cons-threshold
