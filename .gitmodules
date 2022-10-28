@@ -16,3 +16,12 @@
 [submodule "site-lisp/kubel"]
 	path = site-lisp/kubel
 	url = git@github.com:abrochard/kubel.git
+[submodule "site-lisp/deno-bridge"]
+	path = site-lisp/deno-bridge
+	url = https://github.com/manateelazycat/deno-bridge
+[submodule "site-lisp/emacs-websocket"]
+	path = site-lisp/emacs-websocket
+	url = https://github.com/ahyatt/emacs-websocket.git
+[submodule "site-lisp/insert-translated-name"]
+	path = site-lisp/insert-translated-name
+	url = https://github.com/manateelazycat/insert-translated-name.git

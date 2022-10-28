@@ -213,6 +213,7 @@
 (require 'init-citre)
 (require 'init-eaf)
 (require 'init-lsp-bridge)
+(require 'init-deno-bridge)
 (provide 'init)
 ;; Local Variables:
 ;; coding: utf-8
