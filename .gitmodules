@@ -27,4 +27,7 @@
 	url = https://github.com/manateelazycat/insert-translated-name.git
 [submodule "site-lisp/snails"]
 	path = site-lisp/snails
-	url = https://github.com/manateelazycat/snails
+	url = https://github.com/edmondfrank/snails
+[submodule "priv"]
+	path = priv
+	url = ssh://edmondfrank@175.178.76.69:1022/edmondfrank/priv.git
