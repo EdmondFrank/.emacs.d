@@ -194,17 +194,24 @@
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
 ;;----------------------------------------------------------------------------
+
+(add-to-list 'load-path (expand-file-name "site-lisp/kubel" user-emacs-directory))
+(require 'kubel)
+
+(add-to-list 'load-path (expand-file-name "site-lisp/snails" user-emacs-directory))
+(require 'snails)
+
 (require 'init-local nil t)
+(require 'init-sort)
 (require 'init-pyim)
 (require 'init-doom-themes)
-(require 'init-sidebar)
 (require 'init-dumb-jump)
 (require 'init-leetcode)
 (require 'init-undo-tree)
 (require 'init-reader)
 (require 'init-noter)
+(require 'init-blink-search)
 (require 'init-keybindings)
-(require 'init-sort)
 (require 'init-functions)
 (require 'init-citre)
 (require 'init-eaf)
@@ -226,12 +233,6 @@
 (require-package 'vterm)
 
 (global-auto-complete-mode)
-
-(add-to-list 'load-path (expand-file-name "site-lisp/kubel" user-emacs-directory))
-(require 'kubel)
-
-(add-to-list 'load-path (expand-file-name "site-lisp/snails" user-emacs-directory))
-(require 'snails)
 
 (setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
 (display-time-mode 1) ;; 常显

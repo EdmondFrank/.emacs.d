@@ -3,14 +3,19 @@
 ;;; Code:
 ;;custom keybinding
 (global-set-key (kbd "C-\\") 'toggle-input-method)
+(global-set-key (kbd "C-|") 'insert-translated-name-insert-original-translation)
 
-(global-unset-key (kbd "C-SPC"))
+(global-unset-key (kbd "S-SPC"))
 (global-set-key (kbd "S-SPC") 'set-mark-command)
 
-(global-unset-key (kbd "C-x C-b"))
+(global-unset-key (kbd "C-S-b"))
 (global-set-key (kbd "C-S-b") 'ibuffer)
 
 ;; Try use counsel-grep to replace swiper
+
+(global-unset-key (kbd "C-x b"))
+(global-set-key (kbd "C-x b") 'blink-search)
+
 (global-unset-key (kbd "C-s"))
 (global-set-key (kbd "C-s") 'swiper-isearch)
 
