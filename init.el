@@ -198,12 +198,9 @@
 (add-to-list 'load-path (expand-file-name "site-lisp/kubel" user-emacs-directory))
 (require 'kubel)
 
-(add-to-list 'load-path (expand-file-name "site-lisp/snails" user-emacs-directory))
-(require 'snails)
-
 (require 'init-local nil t)
 (require 'init-sort)
-(require 'init-pyim)
+(require 'init-rime)
 (require 'init-doom-themes)
 (require 'init-dumb-jump)
 (require 'init-leetcode)
