@@ -201,6 +201,7 @@
 (require 'init-local nil t)
 (require 'init-sort)
 (require 'init-rime)
+(require 'init-everywhere)
 (require 'init-doom-themes)
 (require 'init-dumb-jump)
 (require 'init-leetcode)
