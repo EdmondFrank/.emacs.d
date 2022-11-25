@@ -37,3 +37,6 @@
 [submodule "site-lisp/emacs-everywhere"]
 	path = site-lisp/emacs-everywhere
 	url = ssh://edmondfrank@175.178.76.69:1022/edmondfrank/emacs-everywhere.git
+[submodule "site-lisp/sdcv"]
+	path = site-lisp/sdcv
+	url = https://github.com/manateelazycat/sdcv.git
