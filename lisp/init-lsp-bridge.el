@@ -10,12 +10,47 @@
 (require 'lsp-bridge)
 
 (global-lsp-bridge-mode)
+(setq lsp-bridge-complete-manually t)
+(setq lsp-bridge-enable-diagnosics nil)
+(setq lsp-bridge-enable-search-words nil)
+(setq lsp-bridge-enable-auto-format-code nil)
+(setq acm-enable-yas nil)
 (setq acm-enable-icon nil)
+(setq acm-enable-citre nil)
+(setq acm-enable-tabnine nil)
+
+(defun lsp-bridge-auto-mode ()
+  "Switch on/off lsp-bridge auto mode."
+  (interactive)
+  (if lsp-bridge-complete-manually
+      (or
+       (setq lsp-bridge-complete-manually nil)
+       (message "lsp-bridge auto mode on"))
+    (and
+     (setq lsp-bridge-complete-manually t)
+     (message "lsp-bridge auto mode off"))))
+
+(defun lsp-bridge-auto-format-mode ()
+  "Switch on/off lsp-bridge auto mode."
+  (interactive)
+  (if lsp-bridge-enable-auto-format-code
+      (or
+       (setq lsp-bridge-enable-auto-format-code nil)
+       (message "lsp-bridge auto format off"))
+    (and
+     (setq lsp-bridge-enable-auto-format-code t)
+     (message "lsp-bridge auto format on"))))
+
 (add-hook 'lsp-bridge-mode-hook
           (lambda ()
             (define-key lsp-bridge-mode-map (kbd "C-j") 'lsp-bridge-popup-documentation-scroll-up)
-            (define-key lsp-bridge-mode-map (kbd "C-k") 'lsp-bridge-popup-documentation-scroll-down)))
-
+            (define-key lsp-bridge-mode-map (kbd "C-k") 'lsp-bridge-popup-documentation-scroll-down)
+            (define-key lsp-bridge-mode-map (kbd "C-b d") 'lsp-bridge-popup-documentation)
+            (define-key lsp-bridge-mode-map (kbd "C-b b") 'lsp-bridge-toggle-sdcv-helper)
+            (define-key lsp-bridge-mode-map (kbd "C-b v") 'lsp-bridge-popup-complete-menu)
+            (define-key lsp-bridge-mode-map (kbd "C-b a") 'lsp-bridge-auto-mode)
+            (define-key lsp-bridge-mode-map (kbd "C-b f") 'lsp-bridge-auto-format-mode))
+          )
 ;; (setq lsp-bridge-enable-log t)
 
 (require-package 'yafolding)
