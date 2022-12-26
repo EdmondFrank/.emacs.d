@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (require-package 'nov)
+(require-package 'proxy-mode)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 (add-to-list 'load-path (expand-file-name "site-lisp/go-translate" user-emacs-directory))
