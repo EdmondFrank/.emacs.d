@@ -229,6 +229,12 @@
 (require-package 'auto-complete)
 
 (require-package 'vterm)
+(add-hook 'vterm-mode-hook
+          (lambda ()
+            (local-set-key (kbd "<C-left>") 'windmove-left)
+            (local-set-key (kbd "<C-right>") 'windmove-right)
+            (local-set-key (kbd "<C-up>") 'windmove-up)
+            (local-set-key (kbd "<C-down>") 'windmove-down)))
 
 (global-auto-complete-mode)
 
