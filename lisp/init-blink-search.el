@@ -9,6 +9,7 @@
 (add-to-list 'load-path (expand-file-name "site-lisp/blink-search" user-emacs-directory))
 (require 'blink-search)
 
+(setq blink-search-posframe-standalone t)
 (setq blink-search-enable-posframe t)
 (setq blink-search-enable-icon nil)
 (setq blink-search-enable-debug nil)

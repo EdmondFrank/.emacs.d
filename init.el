@@ -231,6 +231,7 @@
 (require-package 'vterm)
 (add-hook 'vterm-mode-hook
           (lambda ()
+            (local-set-key (kbd "<C-\\>") 'toggle-input-method)
             (local-set-key (kbd "<C-left>") 'windmove-left)
             (local-set-key (kbd "<C-right>") 'windmove-right)
             (local-set-key (kbd "<C-up>") 'windmove-up)
