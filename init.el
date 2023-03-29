@@ -224,6 +224,10 @@
 
 ;;Custom settings
 
+(add-to-list 'load-path (expand-file-name "site-lisp/nova" user-emacs-directory))
+
+(require 'nova)
+
 (require-package 'tramp)
 
 (require-package 'auto-complete)
