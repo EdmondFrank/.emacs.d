@@ -37,6 +37,3 @@
 [submodule "site-lisp/sdcv"]
 	path = site-lisp/sdcv
 	url = https://github.com/manateelazycat/sdcv.git
-[submodule "site-lisp/nova"]
-	path = site-lisp/nova
-	url = ssh://edmondfrank@175.178.76.69:1022/edmondfrank/nova.git

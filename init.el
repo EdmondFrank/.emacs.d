@@ -160,9 +160,9 @@
 (maybe-require-package 'dotenv-mode)
 (maybe-require-package 'shfmt)
 
-(when (maybe-require-package 'uptimes)
-  (setq-default uptimes-keep-count 200)
-  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
+;; (when (maybe-require-package 'uptimes)
+;;   (setq-default uptimes-keep-count 200)
+;;   (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
 (when (fboundp 'global-eldoc-mode)
   (add-hook 'after-init-hook 'global-eldoc-mode))
@@ -223,10 +223,6 @@
 ;;; init.el ends here
 
 ;;Custom settings
-
-(add-to-list 'load-path (expand-file-name "site-lisp/nova" user-emacs-directory))
-
-(require 'nova)
 
 (require-package 'tramp)
 
