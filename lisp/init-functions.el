@@ -57,5 +57,25 @@
 
 (define-key org-mode-map (kbd "C-x C-l") 'org-copy-link-url)
 
+(defun enlarge-frame-horizontally ()
+  "Enlarges the Emacs frame horizontally by 5 columns."
+  (interactive)
+  (set-frame-size (selected-frame) (+ (frame-width) 5) (frame-height)))
+
+(defun shrink-frame-horizontally ()
+  "Shrinks the Emacs frame horizontally by 5 columns."
+  (interactive)
+  (set-frame-size (selected-frame) (- (frame-width) 5) (frame-height)))
+
+(defun enlarge-frame-vertically ()
+  "Enlarges the Emacs frame vertically by 5 rows."
+  (interactive)
+  (set-frame-size (selected-frame) (frame-width) (+ (frame-height) 5)))
+
+(defun shrink-frame-vertically ()
+  "Shrinks the Emacs frame vertically by 5 rows."
+  (interactive)
+  (set-frame-size (selected-frame) (frame-width) (- (frame-height) 5)))
+
 (provide 'init-functions)
 ;;; init-functions.el ends here

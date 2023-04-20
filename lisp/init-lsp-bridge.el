@@ -49,7 +49,10 @@
             (define-key lsp-bridge-mode-map (kbd "C-b b") 'lsp-bridge-toggle-sdcv-helper)
             (define-key lsp-bridge-mode-map (kbd "C-b v") 'lsp-bridge-popup-complete-menu)
             (define-key lsp-bridge-mode-map (kbd "C-b a") 'lsp-bridge-auto-mode)
-            (define-key lsp-bridge-mode-map (kbd "C-b f") 'lsp-bridge-auto-format-mode))
+            (define-key lsp-bridge-mode-map (kbd "C-b f") 'lsp-bridge-auto-format-mode)
+            (define-key lsp-bridge-mode-map (kbd "C-b o") 'lsp-bridge-open-remote-file)
+            (define-key lsp-bridge-mode-map (kbd "C-b s") 'lsp-bridge-remote-save-buffer)
+            (define-key lsp-bridge-mode-map (kbd "C-b k") 'lsp-bridge-remote-kill-buffer))
           )
 ;; (setq lsp-bridge-enable-log t)
 

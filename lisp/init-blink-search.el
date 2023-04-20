@@ -14,7 +14,7 @@
 (setq blink-search-enable-icon nil)
 (setq blink-search-enable-debug nil)
 (setq blink-search-db-path (expand-file-name "priv/snails.db" user-emacs-directory))
-(setq blink-search-backends '("Buffer List" "Common Directory" "Find File" "Recent File" "IMenu" "Elisp Symbol" "Key Value"))
+(setq blink-search-search-backends '("Buffer List" "Recent File" "IMenu" "Elisp Symbol" "Key Value"))
 
 (provide 'init-blink-search)
 ;;; init-blink-search.el ends here

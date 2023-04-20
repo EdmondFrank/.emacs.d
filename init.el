@@ -7,7 +7,7 @@
 ;;; Code:
 
 ;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
-;;(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 (let ((minver "26.1"))
   (when (version< emacs-version minver)
@@ -21,12 +21,7 @@
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
 
-(let (;; 加载的时候临时增大`gc-cons-threshold'以加速启动速度。
-      (gc-cons-threshold most-positive-fixnum)
-      ;; 清空避免加载远程文件的时候分析文件。
-      (file-name-handler-alist nil))
-
-    ;; Emacs配置文件内容写到下面.
+;; Emacs配置文件内容写到下面.
 ;;----------------------------------------------------------------------------
 ;; Adjust garbage collection thresholds during startup, and thereafter
 ;;----------------------------------------------------------------------------
@@ -251,4 +246,3 @@
 (setq remote-file-name-inhibit-cache nil)
 (setq ivy-rich-parse-remote-buffer nil)
 (setq vc-handled-backends '(Git))
-);;gc-cons-threshold
