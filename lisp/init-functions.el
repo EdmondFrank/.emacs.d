@@ -57,6 +57,17 @@
 
 (define-key org-mode-map (kbd "C-x C-l") 'org-copy-link-url)
 
+(defun pandora ()
+  "Start a vterm terminal, run the pandora COMMAND, and rename the buffer to 'pandora'."
+  (interactive)
+  (let ((buffer (generate-new-buffer "*vterm*")))
+    (with-current-buffer buffer
+      (vterm-mode)
+      (vterm-send-string "pandora")
+      (vterm-send-return))
+    (switch-to-buffer buffer)
+    (rename-buffer "pandora" t)))
+
 (defun enlarge-frame-horizontally ()
   "Enlarges the Emacs frame horizontally by 5 columns."
   (interactive)

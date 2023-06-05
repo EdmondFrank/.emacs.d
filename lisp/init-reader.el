@@ -5,9 +5,6 @@
 (require-package 'proxy-mode)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
-(add-to-list 'load-path (expand-file-name "site-lisp/go-translate" user-emacs-directory))
-(require 'go-translate)
-
 (add-to-list 'load-path (expand-file-name "site-lisp/sdcv" user-emacs-directory))
 (require 'sdcv)
 
