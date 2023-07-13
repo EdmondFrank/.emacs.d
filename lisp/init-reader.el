@@ -8,13 +8,6 @@
 (add-to-list 'load-path (expand-file-name "site-lisp/sdcv" user-emacs-directory))
 (require 'sdcv)
 
-(setq gts-translate-list '(("en" "zh") ("zh" "en")))
-(setq gts-default-translator
-      (gts-translator
-       :picker (gts-prompt-picker)
-       :engines (list (gts-google-engine) (gts-google-rpc-engine))
-       :render (gts-buffer-render)))
-
 ;; (setq sdcv-say-word-p t)               ;say word after translation
 
 ;; (setq sdcv-dictionary-data-dir "/usr/share/startdict/dic") ;setup directory of stardict dictionary

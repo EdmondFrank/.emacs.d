@@ -63,7 +63,7 @@
   (let ((buffer (generate-new-buffer "*vterm*")))
     (with-current-buffer buffer
       (vterm-mode)
-      (vterm-send-string "pandora")
+      (vterm-send-string "pandora -p http://127.0.0.1:1081")
       (vterm-send-return))
     (switch-to-buffer buffer)
     (rename-buffer "pandora" t)))
@@ -87,6 +87,11 @@
   "Shrinks the Emacs frame vertically by 5 rows."
   (interactive)
   (set-frame-size (selected-frame) (frame-width) (- (frame-height) 5)))
+
+(defun insert-current-date ()
+  "Insert the current date in Markdown format."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
 
 (provide 'init-functions)
 ;;; init-functions.el ends here

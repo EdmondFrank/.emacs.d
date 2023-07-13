@@ -12,7 +12,6 @@
 (require 'eaf-org-previewer)
 (require 'eaf-markdown-previewer)
 (require 'eaf-mindmap)
-(require 'eaf-file-manager)
 (require 'eaf-jupyter)
 (require 'eaf-pdf-viewer)
 (require 'eaf-browser)
