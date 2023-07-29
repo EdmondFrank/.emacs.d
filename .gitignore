@@ -1,6 +1,7 @@
 /url/cache
 /.emacs.desktop
 /auto-save-list
+/eww-bookmarks
 /network-security.data
 /.session
 /session.*
@@ -24,6 +25,7 @@ site-lisp/package/
 /.mc-lists.el
 /var
 /.sqli_history
+/.dap-breakpoints
 /frame-restore-parameters
 /.achievements
 /.bookmarks.el
@@ -65,4 +67,8 @@ diary
 /eln-cache/
 /projects
 /eaf
+/projectile.cache
+/eglot-eclipse-jdt-cache
+/devdocs
+/workspace
 snails.db

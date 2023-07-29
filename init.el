@@ -214,6 +214,7 @@
 (require 'init-eaf)
 (require 'init-lsp-bridge)
 (require 'init-deno-bridge)
+(require 'init-bard)
 (provide 'init)
 ;; Local Variables:
 ;; coding: utf-8

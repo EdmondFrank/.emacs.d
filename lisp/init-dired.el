@@ -13,6 +13,15 @@
     (diredfl-global-mode)
     (require 'dired-x)))
 
+(use-package dired-rsync
+  :bind (:map dired-mode-map
+              ("C-c C-r" . dired-rsync)))
+
+(use-package dired-rsync-transient
+  :bind (:map dired-mode-map
+              ("C-c C-x" . dired-rsync-transient)))
+
+
 ;; Hook up dired-x global bindings without loading it up-front
 (define-key ctl-x-map "\C-j" 'dired-jump)
 (define-key ctl-x-4-map "\C-j" 'dired-jump-other-window)
