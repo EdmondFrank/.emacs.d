@@ -37,3 +37,6 @@
 [submodule "site-lisp/Bard.el"]
 	path = site-lisp/Bard.el
 	url = https://github.com/AllTheLife/Bard.el.git
+[submodule "site-lisp/key-echo"]
+	path = site-lisp/key-echo
+	url = git@github.com:manateelazycat/key-echo.git
