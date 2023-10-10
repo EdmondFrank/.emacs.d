@@ -2,8 +2,6 @@
 ;;; Commentary:
 
 (add-to-list 'load-path (expand-file-name "site-lisp/emacs-rime" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "site-lisp/key-echo" user-emacs-directory))
-
 (require 'rime)
 
 ;;; Code:
@@ -17,16 +15,6 @@
 
 (setq default-input-method "rime"
       rime-show-candidate 'posframe)
-
-(require 'key-echo)
-(key-echo-enable)
-
-(defun key-echo-shift-to-switch-input-method (key)
-  (interactive)
-  (when (string-equal key "Key.shift")
-    (toggle-input-method)))
-
-(setq key-echo-single-key-trigger-func 'key-echo-shift-to-switch-input-method)
 
 (provide 'init-rime)
 ;;; init-rime.el ends here
