@@ -254,3 +254,4 @@
 (setq ivy-rich-parse-remote-buffer nil)
 (setq vc-handled-backends '(Git))
 );;gc-cons-threshold
+(put 'dired-find-alternate-file 'disabled nil)

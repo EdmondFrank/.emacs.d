@@ -69,6 +69,9 @@ diary
 /eaf
 /projectile.cache
 /eglot-eclipse-jdt-cache
+/blink-search
+/lsp-bridge
+/private
 /devdocs
 /workspace
 snails.db
