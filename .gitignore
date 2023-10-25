@@ -76,3 +76,4 @@ diary
 /devdocs
 /workspace
 snails.db
+/forge-*.sqlite
