@@ -7,7 +7,7 @@
 ;;; Code:
 
 ;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
-;; (setq debug-on-error t)
+(setq debug-on-error t)
 
 (let ((minver "26.1"))
   (when (version< emacs-version minver)
@@ -237,7 +237,7 @@
             (local-set-key (kbd "<C-up>") 'windmove-up)
             (local-set-key (kbd "<C-down>") 'windmove-down)))
 
-(global-auto-complete-mode)
+;; (global-auto-complete-mode)
 
 (setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
 (display-time-mode 1) ;; 常显
@@ -252,6 +252,10 @@
 (setq tramp-chunksize 1024)
 (setq remote-file-name-inhibit-cache nil)
 (setq ivy-rich-parse-remote-buffer nil)
+(setq-default bidi-display-reordering nil)
 (setq vc-handled-backends '(Git))
+;; (add-to-list 'load-path (expand-file-name "site-lisp/holo-layer" user-emacs-directory))
+;; (require 'holo-layer)
+;; (holo-layer-enable)
 );;gc-cons-threshold
 (put 'dired-find-alternate-file 'disabled nil)

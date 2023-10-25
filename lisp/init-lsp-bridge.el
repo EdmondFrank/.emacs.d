@@ -14,10 +14,12 @@
 (setq lsp-bridge-enable-diagnosics nil)
 (setq lsp-bridge-enable-search-words nil)
 (setq lsp-bridge-enable-auto-format-code nil)
+(setq lsp-bridge-enable-with-tramp t)
 (setq acm-enable-yas nil)
 (setq acm-enable-icon nil)
 (setq acm-enable-citre nil)
 (setq acm-enable-tabnine nil)
+(setq acm-enable-codeium t)
 
 (defun lsp-bridge-auto-mode ()
   "Switch on/off lsp-bridge auto mode."
