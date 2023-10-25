@@ -143,11 +143,6 @@
 (require 'init-folding)
 (require 'init-dash)
 
-(when (and (require 'treesit nil t)
-           (fboundp 'treesit-available-p)
-           (treesit-available-p))
-  (require 'init-treesitter))
-
 (require 'init-ledger)
 ;; Extra packages which don't require any configuration
 
@@ -173,7 +168,13 @@
 
 (require 'init-direnv)
 
-;;----------------------------------------------------------------------------
+(when (and (require 'treesit nil t)
+           (fboundp 'treesit-available-p)
+           (treesit-available-p))
+  (require 'init-treesitter))
+
+
+
 ;; Allow access from emacsclient
 ;;----------------------------------------------------------------------------
 (add-hook 'after-init-hook
