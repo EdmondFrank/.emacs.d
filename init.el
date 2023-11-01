@@ -259,6 +259,10 @@
 (setq ivy-rich-parse-remote-buffer nil)
 (setq-default bidi-display-reordering nil)
 (setq vc-handled-backends '(Git))
+(setq bidi-inhibit-bpa t
+      long-line-threshold 1000
+      large-hscroll-threshold 1000
+      syntax-wholeline-max 1000)
 ;; (add-to-list 'load-path (expand-file-name "site-lisp/holo-layer" user-emacs-directory))
 ;; (require 'holo-layer)
 ;; (holo-layer-enable)

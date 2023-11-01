@@ -27,9 +27,11 @@
         emacs-everywhere-init-spell-check
         emacs-everywhere-toggle-input-method))
 
+(setq emacs-everywhere-final-hooks '())
+
 (add-hook 'emacs-everywhere-mode-hook
           (lambda ()
-            (define-key emacs-everywhere-mode-map (kbd "M-q") 'emacs-everywhere-finish-or-ctrl-c-ctrl-c)))
+            (define-key emacs-everywhere-mode-map (kbd "M-q") 'emacs-everywhere-finish)))
 
 (provide 'init-everywhere)
 ;;; init-everywhere.el ends here

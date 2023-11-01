@@ -21,6 +21,14 @@
 (setq acm-enable-tabnine nil)
 (setq acm-enable-codeium t)
 
+(setq acm-completion-backend-merge-order '("codeium-candidates"
+                                           "mode-first-part-candidates"
+                                           "template-first-part-candidates"
+                                           "tabnine-candidates"
+                                           "copilot-candidates"
+                                           "template-second-part-candidates"
+                                           "mode-second-part-candidates"))
+
 (defun lsp-bridge-auto-mode ()
   "Switch on/off lsp-bridge auto mode."
   (interactive)

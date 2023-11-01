@@ -10,9 +10,6 @@
   :config
   (use-package alchemist
     :hook ((elixir-mode . alchemist-mode)
-           (elixir-mode . alchemist-phoenix-mode)))
-  (use-package eglot
-    :hook ((elixir-mode . eglot-ensure))
-    :init (add-to-list 'exec-path (expand-file-name "elixir-ls-1.13" user-emacs-directory))))
+           (elixir-mode . alchemist-phoenix-mode))))
 (provide 'init-elixir)
 ;;; init-elixir.el ends here
