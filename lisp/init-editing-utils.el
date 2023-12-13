@@ -92,7 +92,7 @@
 
 (when (boundp 'display-fill-column-indicator)
   (setq-default indicate-buffer-boundaries 'left)
-  (setq-default display-fill-column-indicator-character ?\u250a)
+  (setq-default display-fill-column-indicator-character ?┊)
   (setq-default display-fill-column-indicator-column 120)
   (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode))
 
