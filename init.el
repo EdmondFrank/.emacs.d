@@ -21,22 +21,25 @@
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
 
-(let (;; 加载的时候临时增大`gc-cons-threshold'以加速启动速度。
-      (gc-cons-threshold most-positive-fixnum)
-      ;; 清空避免加载远程文件的时候分析文件。
-      (file-name-handler-alist nil))
-
-;; Emacs配置文件内容写到下面.
-;;----------------------------------------------------------------------------
+
 ;; Adjust garbage collection thresholds during startup, and thereafter
-;;----------------------------------------------------------------------------
+
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
-      (init-gc-cons-threshold (* 128 1024 1024)))
+      (init-gc-cons-threshold (* 128 1024 1024))
+      (file-name-handler-alist nil))
   (setq gc-cons-threshold init-gc-cons-threshold)
   (add-hook 'emacs-startup-hook
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
-;;----------------------------------------------------------------------------
+
+
+;; Process performance tuning
+
+(setq read-process-output-max (* 4 1024 1024))
+(setq process-adaptive-read-buffering nil)
+
+
 ;; Bootstrap config
+
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (require 'init-utils)
@@ -145,6 +148,7 @@
 
 (require 'init-ledger)
 (require 'init-lua)
+(require 'init-terminals)
 
 ;; Extra packages which don't require any configuration
 
@@ -267,5 +271,4 @@
 ;; (add-to-list 'load-path (expand-file-name "site-lisp/holo-layer" user-emacs-directory))
 ;; (require 'holo-layer)
 ;; (holo-layer-enable)
-);;gc-cons-threshold
 (put 'dired-find-alternate-file 'disabled nil)
