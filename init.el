@@ -52,11 +52,6 @@
 ;;----------------------------------------------------------------------------
 (require 'init-preload-local nil t)
 
-;; Work around an issue in Emacs 29 where this gets implicitly
-;; reinstalled via the rg -> transient dependency chain, but fails to
-;; reload cleanly, breaking first-time start-up
-(require-package 'seq "2.24")
-
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
