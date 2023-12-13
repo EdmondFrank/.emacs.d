@@ -130,6 +130,8 @@
 (require 'init-terraform)
 (require 'init-nix)
 (maybe-require-package 'nginx-mode)
+(maybe-require-package 'just-mode)
+(maybe-require-package 'justl)
 
 (require 'init-paredit)
 (require 'init-lisp)
