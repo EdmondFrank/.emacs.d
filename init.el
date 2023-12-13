@@ -7,7 +7,7 @@
 ;;; Code:
 
 ;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
-(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 (let ((minver "26.1"))
   (when (version< emacs-version minver)
@@ -263,6 +263,7 @@
       long-line-threshold 1000
       large-hscroll-threshold 1000
       syntax-wholeline-max 1000)
+(setq csv-separators '("," "\t"))
 ;; (add-to-list 'load-path (expand-file-name "site-lisp/holo-layer" user-emacs-directory))
 ;; (require 'holo-layer)
 ;; (holo-layer-enable)
