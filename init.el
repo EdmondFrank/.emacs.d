@@ -128,7 +128,7 @@
 (require 'init-yaml)
 (require 'init-docker)
 (require 'init-terraform)
-(require 'init-nix)
+;; (require 'init-nix)
 (maybe-require-package 'nginx-mode)
 (maybe-require-package 'just-mode)
 (maybe-require-package 'justl)
@@ -150,8 +150,8 @@
 
 (require 'init-ledger)
 (require 'init-lua)
-(require 'init-uiua)
-(require 'init-terminals)
+;; (require 'init-uiua)
+;; (require 'init-terminals)
 
 ;; Extra packages which don't require any configuration
 
@@ -226,7 +226,7 @@
 (require 'init-eaf)
 (require 'init-lsp-bridge)
 (require 'init-deno-bridge)
-(require 'init-bard)
+(require 'init-gemini)
 (provide 'init)
 ;; Local Variables:
 ;; coding: utf-8
