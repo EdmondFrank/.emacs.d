@@ -14,7 +14,7 @@
 (setq lsp-bridge-enable-diagnosics nil)
 (setq lsp-bridge-enable-search-words nil)
 (setq lsp-bridge-enable-auto-format-code nil)
-(setq lsp-bridge-enable-with-tramp t)
+(setq lsp-bridge-enable-with-tramp nil)
 (setq acm-enable-yas nil)
 (setq acm-enable-icon nil)
 (setq acm-enable-citre nil)

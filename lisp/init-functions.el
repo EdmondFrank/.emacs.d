@@ -44,6 +44,16 @@
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
 
+(defun gitee-upload-image-from-clipboard ()
+  "Invoke `gitee_cli attach_files upload -c` and insert the result as markdown image format in current buffer if command exit status is 0, otherwise show message with fail and ask user to retry."
+  (interactive)
+  (let ((result (shell-command-to-string "gitee_cli attach_files upload -c")))
+    (if (string-match-p "^http.*\\.png$" result)
+        (insert (concat "![image](" result ")"))
+      (message "fail to upload image, please retry ~"))))
+
+;; (define-key markdown-mode-map (kbd "C-c C-v") 'gitee-upload-image-from-clipboard)
+
 (defun load-org-babel-executor ()
   "Org babel load languages runtime."
   (interactive)
