@@ -389,6 +389,13 @@ typical word processor."
 
 (setq org-agenda-files (quote ("~/GTD/todos.org")))
 
+(use-package org-contacts
+  :ensure org-plus-contrib
+  :init (require 'org-contacts)
+  :custom
+  (org-contacts-files
+   (file-expand-wildcards "~/GTD/contacts.org")))
+
 (require-package 'org-present)
 (with-eval-after-load "org-present"
   ;; Set how large the characters should be
