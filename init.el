@@ -223,11 +223,11 @@
 (require 'init-blink-search)
 (require 'init-keybindings)
 (require 'init-functions)
-(require 'init-citre)
 (require 'init-eaf)
 (require 'init-lsp-bridge)
 (require 'init-deno-bridge)
 (require 'init-gemini)
+(require 'init-citre)
 (provide 'init)
 ;; Local Variables:
 ;; coding: utf-8
