@@ -65,7 +65,22 @@
   (kill-new (org-element-property :raw-link (org-element-context)))
   (message "Copied Successfully !"))
 
+(defun org-copy-link-text ()
+  "Copy the text part of an org-mode link at point."
+  (interactive)
+  (let ((link (org-element-context)))
+    (if (not (eq (car link) 'link))
+        (error "Not on a link")
+      (let ((link-text (buffer-substring
+                        (org-element-property :contents-begin link)
+                        (org-element-property :contents-end link))))
+        (if link-text
+            (kill-new link-text)
+          (error "Could not extract link text"))
+        (message "Copied link text: %s" (car kill-ring))))))
+
 (define-key org-mode-map (kbd "C-x C-l") 'org-copy-link-url)
+(define-key org-mode-map (kbd "C-x C-k") 'org-copy-link-text)
 
 (defun pandora ()
   "Start a vterm terminal, run the pandora COMMAND, and rename the buffer to 'pandora'."
