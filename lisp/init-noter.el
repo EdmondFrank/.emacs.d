@@ -6,10 +6,9 @@
 (require-package 'org-brain)
 (require-package 'org-mind-map)
 
-(setq org-brain-path "~/backup")
-(setq org-brain-path-list '("~/backup"
-                            "~/GTD"
-                            ))
+(setq org-brain-path "~/GTD/backup")
+(setq org-brain-path-list '("~/GTD/backup"
+                            "~/GTD"))
 (setq deft-recursive t)
 ;; Global settings (defaults)
 (setq org-id-track-globally t)
