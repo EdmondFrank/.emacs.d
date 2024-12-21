@@ -228,6 +228,7 @@
 (require 'init-deno-bridge)
 (require 'init-gemini)
 (require 'init-citre)
+(require 'init-exhub)
 (provide 'init)
 ;; Local Variables:
 ;; coding: utf-8
