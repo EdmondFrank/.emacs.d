@@ -10,15 +10,9 @@
 [submodule "site-lisp/kubel"]
 	path = site-lisp/kubel
 	url = git@github.com:abrochard/kubel.git
-[submodule "site-lisp/deno-bridge"]
-	path = site-lisp/deno-bridge
-	url = ssh://edmondfrank@175.178.76.69:1022/edmondfrank/deno-bridge.git
 [submodule "site-lisp/emacs-websocket"]
 	path = site-lisp/emacs-websocket
 	url = https://github.com/ahyatt/emacs-websocket.git
-[submodule "site-lisp/insert-translated-name"]
-	path = site-lisp/insert-translated-name
-	url = ssh://edmondfrank@175.178.76.69:1022/edmondfrank/insert-translated-name.git
 [submodule "priv"]
 	path = priv
 	url = ssh://edmondfrank@175.178.76.69:1022/edmondfrank/priv.git

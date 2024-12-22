@@ -225,7 +225,6 @@
 (require 'init-functions)
 (require 'init-eaf)
 (require 'init-lsp-bridge)
-(require 'init-deno-bridge)
 (require 'init-gemini)
 (require 'init-citre)
 (require 'init-exhub)
