@@ -9,6 +9,7 @@
 (exhub-start-elixir)
 (exhub-start)
 
+(require 'exhub-chat)
 (require 'exhub-translate)
 
 (provide 'init-exhub)
