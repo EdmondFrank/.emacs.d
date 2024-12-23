@@ -28,9 +28,6 @@
 [submodule "site-lisp/sdcv"]
 	path = site-lisp/sdcv
 	url = https://github.com/manateelazycat/sdcv.git
-[submodule "site-lisp/Gemini.el"]
-	path = site-lisp/Gemini.el
-	url = https://github.com/AllTheLife/Gemini.el.git
 [submodule "site-lisp/aider.el"]
 	path = site-lisp/aider.el
 	url = https://github.com/tninja/aider.el.git
