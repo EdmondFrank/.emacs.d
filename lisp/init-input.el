@@ -8,7 +8,8 @@
       (sis-ism-lazyman-config
        "com.apple.keylayout.ABC"
        "com.apple.inputmethod.SCIM.ITABC")
-      (sis-global-respect-mode))
+      (sis-global-respect-mode)
+      (sis-global-cursor-color-mode))
   (when (eq system-type 'gnu/linux)
     ;; Linux specific settings
     (add-to-list 'load-path (expand-file-name "site-lisp/emacs-rime" user-emacs-directory))
