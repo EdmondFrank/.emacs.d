@@ -5,7 +5,7 @@
 (add-to-list 'load-path (expand-file-name "site-lisp/aider.el" user-emacs-directory))
 
 (require 'aider)
-
+(setq aider-program (expand-file-name ".local/bin/aider" (getenv "HOME")))
 (setq aider-args '("--no-auto-commits" "--model" "openai/Qwen/Qwen2.5-Coder-32B-Instruct"))
 (setenv "OPENAI_API_BASE" "https://api.siliconflow.cn/v1/")
 (setenv "OPENAI_API_KEY" "your api token")
