@@ -118,5 +118,27 @@
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
 
+(defun open-dir-in-system ()
+  "Open the current directory or the parent directory of the current file in the system's file manager."
+  (interactive)
+  (let ((directory
+         (if (buffer-file-name)
+             (file-name-directory (buffer-file-name))
+           (dired-current-directory))))
+    (cond
+     ((eq system-type 'darwin)
+      (call-process "open" nil nil nil directory))
+     ((eq system-type 'windows-nt)
+      (call-process "explorer" nil nil nil directory))
+     ((eq system-type 'gnu/linux)
+      (if (file-executable-p "/usr/bin/xdg-open")
+          (call-process "/usr/bin/xdg-open" nil nil nil directory)
+        (if (file-executable-p "/usr/bin/nautilus")
+            (call-process "/usr/bin/nautilus" nil nil nil directory)
+          (if (file-executable-p "/usr/bin/thunar")
+              (call-process "/usr/bin/thunar" nil nil nil directory)
+            (message "No supported file manager found")))))
+     (t (message "Unsupported operating system")))))
+
 (provide 'init-functions)
 ;;; init-functions.el ends here
