@@ -19,7 +19,7 @@
 (setq acm-enable-icon nil)
 (setq acm-enable-citre nil)
 (setq acm-enable-tabnine nil)
-(setq acm-enable-codeium t)
+(setq acm-enable-codeium nil)
 
 (setq acm-completion-backend-merge-order '("codeium-candidates"
                                            "mode-first-part-candidates"

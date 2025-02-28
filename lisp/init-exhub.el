@@ -11,6 +11,8 @@
 
 (require 'exhub-chat)
 (require 'exhub-translate)
+(require 'exhub-gitee)
+(require 'exhub-tool)
 
 (provide 'init-exhub)
 ;;; init-exhub.el ends here
