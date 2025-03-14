@@ -13,6 +13,8 @@
 (require 'exhub-translate)
 (require 'exhub-gitee)
 (require 'exhub-tool)
+(require 'exhub-agent)
+(require 'exhub-file)
 
 (provide 'init-exhub)
 ;;; init-exhub.el ends here
