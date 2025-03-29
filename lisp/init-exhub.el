@@ -15,6 +15,9 @@
 (require 'exhub-tool)
 (require 'exhub-agent)
 (require 'exhub-file)
+(require 'exhub-fim)
+
+(setq exhub-fim-provider 'codestral)
 
 (provide 'init-exhub)
 ;;; init-exhub.el ends here

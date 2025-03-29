@@ -62,7 +62,10 @@
             (define-key lsp-bridge-mode-map (kbd "C-b f") 'lsp-bridge-auto-format-mode)
             (define-key lsp-bridge-mode-map (kbd "C-b o") 'lsp-bridge-open-remote-file)
             (define-key lsp-bridge-mode-map (kbd "C-b s") 'lsp-bridge-remote-save-buffer)
-            (define-key lsp-bridge-mode-map (kbd "C-b k") 'lsp-bridge-remote-kill-buffer))
+            (define-key lsp-bridge-mode-map (kbd "C-b k") 'lsp-bridge-remote-kill-buffer)
+            (define-key lsp-bridge-mode-map (kbd "C-b t") 'exhub-fim-show-suggestion)
+            (define-key lsp-bridge-mode-map (kbd "C-b TAB") 'exhub-fim-accept-suggestion)
+            (define-key lsp-bridge-mode-map (kbd "C-b m") 'exhub-fim-complete-with-minibuffer))
           )
 ;; (setq lsp-bridge-enable-log t)
 
