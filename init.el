@@ -227,6 +227,7 @@
 (require 'init-lsp-bridge)
 (require 'init-citre)
 (require 'init-aider)
+(require 'init-emigo)
 (require 'init-exhub)
 (provide 'init)
 ;; Local Variables:
