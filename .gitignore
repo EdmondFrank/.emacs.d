@@ -79,3 +79,4 @@ snails.db
 /forge-*.sqlite
 .aider*
 .env
+/projectile.cache
