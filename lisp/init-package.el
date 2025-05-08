@@ -17,6 +17,10 @@
   (setq use-package-expand-minimally t)
   (setq use-package-enable-imenu-support t))
 
+(setq package-archives '(("gnu"    . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+                         ("melpa"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+
 (eval-when-compile
   (require 'use-package))
 

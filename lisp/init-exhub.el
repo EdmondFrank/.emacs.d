@@ -17,7 +17,25 @@
 (require 'exhub-file)
 (require 'exhub-fim)
 
-(setq exhub-fim-provider 'codestral)
+(setq exhub-fim-provider 'openai-compatible)
+
+(use-package gptel
+  :config
+  (setq
+   gptel-model 'gpt-4o-mini
+   gptel-backend (gptel-make-openai "Cursor api"        ;Any name you want
+                   :host "127.0.0.1:9069"
+                   :endpoint "/openai/v1/chat/completions"
+                   :stream t                          ;for streaming responses
+                   :protocol "http"
+                   :key "edmondfrank"               ;can be a function that returns the key
+                   :models '(gpt-4o-mini))))
+
+(use-package gptel-aibo
+  :after (gptel)
+  :config
+  (define-key gptel-aibo-mode-map
+              (kbd "C-c /") #'gptel-aibo-apply-last-suggestions))
 
 (provide 'init-exhub)
 ;;; init-exhub.el ends here
