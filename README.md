@@ -62,3 +62,37 @@ Upon starting up Emacs for the first time, further third-party
 packages will be automatically downloaded and installed. If you
 encounter any errors at that stage, try restarting Emacs, and possibly
 running `M-x package-refresh-contents` before doing so.
+
+
+## Updates
+
+Update the config with `git pull`. You'll probably also want/need to
+update the third-party packages regularly too, because that's what I
+do, and the config assumes it:
+
+<kbd>M-x package-list-packages</kbd>, then <kbd>U</kbd> followed by <kbd>x</kbd>.
+
+You should usually restart Emacs after pulling changes or updating
+packages so that they can take effect. Emacs should usually restore
+your working buffers when you restart due to this configuration's use
+of the `desktop` and `session` packages.
+
+## Changing themes and adding your own customization
+
+To add your own customization, use <kbd>M-x customize</kbd>, <kbd>M-x
+customize-themes</kbd> etc. and/or create a file
+`~/.emacs.d/lisp/init-local.el` which looks like this:
+
+```el
+... your code here ...
+
+(provide 'init-local)
+```
+
+If you need initialisation code which executes earlier in the startup process,
+you can also create an `~/.emacs.d/lisp/init-preload-local.el` file.
+
+If you plan to customize things more extensively, you should probably
+just fork the repo and hack away at the config to make it your own!
+Remember to regularly merge in changes from this repo, so that your
+config remains compatible with the latest package and Emacs versions.
