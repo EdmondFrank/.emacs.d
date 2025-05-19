@@ -33,6 +33,12 @@
  truncate-lines nil
  truncate-partial-width-windows nil)
 
+(setq-default bidi-display-reordering nil)
+(setq bidi-inhibit-bpa t
+      long-line-threshold 1000
+      large-hscroll-threshold 1000
+      syntax-wholeline-max 1000)
+
 (add-hook 'after-init-hook 'delete-selection-mode)
 
 (add-hook 'after-init-hook 'global-auto-revert-mode)

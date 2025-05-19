@@ -37,5 +37,8 @@
   (define-key gptel-aibo-mode-map
               (kbd "C-c /") #'gptel-aibo-apply-last-suggestions))
 
+(global-set-key (kbd "C-c z") 'gptel-menu)
+
+
 (provide 'init-exhub)
 ;;; init-exhub.el ends here
