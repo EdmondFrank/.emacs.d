@@ -24,8 +24,6 @@ BUFFER and ALIST are as for `display-buffer-full-frame'."
       (set-window-configuration to-restore))))
 
 (advice-add 'quit-window :around 'sanityinc/maybe-restore-window-configuration)
->>>>>>> 5f26d555
-
 (defmacro sanityinc/fullframe-mode (mode)
   "Configure buffers that open in MODE to display in full-frame."
   `(add-to-list 'display-buffer-alist
