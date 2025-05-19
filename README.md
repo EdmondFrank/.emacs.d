@@ -20,23 +20,18 @@ in the approximate order of how much I use them, from most to least:
 * Erlang
 * Elixir
 
-In particular, there's a nice config for *autocompletion* with
-[corfu](https://github.com/minad/corfu), and
+Included is a nice setup for in-buffer autocompletion with
+[corfu](https://github.com/minad/corfu), and minibuffer completion using
+[vertico](https://github.com/minad/vertico).
+
 `flymake` (re-using backends from [flycheck](http://www.flycheck.org))
 is used to immediately highlight syntax errors in Ruby, Python,
 Javascript, Haskell and a number of other languages.
 
-## Screenshots
+LSP support is provided using `lsp-bridge`.
 
-LSP support is provided using `eglot`.
-
-![demo.png](https://i.loli.net/2019/11/29/JZqBvFGQDbRYT1w.png)
-The config should run on Emacs 25.1 or greater and is designed to
-degrade smoothly - see the CI build - but note that much newer
-versions are required for an increasing number of key packages, so to
-get full functionality you should use the latest Emacs version
-available to you.
-
+Various popular Emacs tools are included and configured here, such as
+`magit`, `docker.el`, `projectile`, `org-mode` etc., but the focus is moderate
 
 ## Supported Emacs versions
 
@@ -52,8 +47,7 @@ to use the latest stable Emacs release like I do.
 
 To make the most of the programming language-specific support in this
 config, further programs will likely be required, particularly those
-that [flycheck](https://github.com/flycheck/flycheck) uses to provide
-on-the-fly syntax checking.
+that flycheck or flymake use to provide on-the-fly syntax checking.
 
 ## Installation
 
