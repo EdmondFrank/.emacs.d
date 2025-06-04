@@ -14,6 +14,7 @@
                              "openai/deepseek-v3"
                              "openai/claude-3.7-sonnet"
                              "openai/gemini-2.5-pro-exp-03-25"
+                             "openai/Qwen3-235B-A22B"
                              ))
 
 

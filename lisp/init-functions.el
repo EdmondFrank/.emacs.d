@@ -118,6 +118,12 @@
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
 
+(defun show-buffer-modes ()
+  "Display the major and minor modes of the current buffer."
+  (interactive)
+  (message "Major mode: %s" major-mode)
+  (message "Minor modes: %s" minor-mode-list))
+
 (defun open-dir-in-system ()
   "Open the current directory or the parent directory of the current file in the system's file manager."
   (interactive)

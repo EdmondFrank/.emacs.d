@@ -215,6 +215,9 @@
 (add-to-list 'load-path (expand-file-name "site-lisp/kubel" user-emacs-directory))
 (require 'kubel)
 
+(add-to-list 'load-path (expand-file-name "site-lisp/yasnippet" user-emacs-directory))
+(require 'yasnippet)
+(yas-global-mode 1)
 (require 'init-local nil t)
 (require 'init-sort)
 (require 'init-everywhere)

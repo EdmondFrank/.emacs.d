@@ -7,9 +7,6 @@
 ;;; Code:
 (add-to-list 'load-path (expand-file-name "site-lisp/lsp-bridge" user-emacs-directory))
 
-(require 'yasnippet)
-(yas-global-mode 1)
-
 (require 'lsp-bridge)
 (global-lsp-bridge-mode)
 
@@ -18,7 +15,7 @@
 (setq lsp-bridge-enable-search-words nil)
 (setq lsp-bridge-enable-auto-format-code nil)
 (setq lsp-bridge-enable-with-tramp nil)
-(setq acm-enable-yas nil)
+(setq acm-enable-yas t)
 (setq acm-enable-icon nil)
 (setq acm-enable-citre nil)
 (setq acm-enable-tabnine nil)

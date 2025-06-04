@@ -21,23 +21,33 @@
 
 (use-package gptel
   :config
+  (require 'gptel-integrations)
   (setq
-   gptel-model 'gpt-4o-mini
-   gptel-backend (gptel-make-openai "Cursor api"        ;Any name you want
+   gptel-model 'Qwen3-235B-A22B
+   gptel-backend (gptel-make-openai "Cursor api" ;Any name you want
                    :host "127.0.0.1:9069"
                    :endpoint "/openai/v1/chat/completions"
-                   :stream t                          ;for streaming responses
+                   :stream t            ;for streaming responses
                    :protocol "http"
-                   :key "edmondfrank"               ;can be a function that returns the key
                    :models '(gpt-4o-mini))))
 
+(use-package mcp
+  :load-path (lambda () (expand-file-name "site-lisp/mcp.el" user-emacs-directory))
+  :after gptel
+  :custom (mcp-hub-servers
+           `(("probe" . (:command "mcp-go-probe" :args ("-y")))))
+  :config (require 'mcp-hub)
+  :hook (after-init . mcp-hub-start-all-server))
+
 (use-package gptel-aibo
+  :load-path (lambda () (expand-file-name "site-lisp/gptel-aibo" user-emacs-directory))
   :after (gptel)
   :config
   (define-key gptel-aibo-mode-map
               (kbd "C-c /") #'gptel-aibo-apply-last-suggestions))
 
 (global-set-key (kbd "C-c z") 'gptel-menu)
+(global-set-key (kbd "C-c x") 'gptel-aibo)
 
 
 (provide 'init-exhub)

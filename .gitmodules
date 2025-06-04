@@ -31,3 +31,12 @@
 [submodule "site-lisp/emigo"]
 	path = site-lisp/emigo
 	url = https://github.com/MatthewZMD/emigo.git
+[submodule "site-lisp/yasnippet"]
+	path = site-lisp/yasnippet
+	url = https://github.com/joaotavora/yasnippet
+[submodule "site-lisp/gptel-aibo"]
+	path = site-lisp/gptel-aibo
+	url = https://github.com/dolmens/gptel-aibo
+[submodule "site-lisp/mcp.el"]
+	path = site-lisp/mcp.el
+	url = https://github.com/lizqwerscott/mcp.el
