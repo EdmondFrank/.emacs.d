@@ -6,15 +6,19 @@
 
 (require 'aider)
 (setq aider-program (expand-file-name ".local/bin/aider" (getenv "HOME")))
-(setq aider-args '("--no-auto-commits" "--model" "openai/Qwen/Qwen2.5-Coder-32B-Instruct"))
-(setenv "OPENAI_API_BASE" "https://api.siliconflow.cn/v1/")
-(setenv "OPENAI_API_KEY" "your api token")
-(setq aider-popular-models '("openai/gpt-4.1"
-                             "openai/gpt-4o-mini"
+
+(setenv "OPENAI_API_BASE" "http://localhost:9069/openai/v1")
+(setenv "OPENAI_API_KEY" "edmondfrank")
+
+(setq aider-args '("--no-auto-commits" "--model" "openai/cursor/gpt-4.1" "--weak-model" "openai/cursor/gpt-4o-mini" "--editor-model" "openai/qwen3-235b-a22b" "--map-tokens" "4096"))
+
+(setq aider-popular-models '("openai/cursor/gpt-4.1"
+                             "openai/cursor/gpt-4o-mini"
                              "openai/deepseek-v3"
-                             "openai/claude-3.7-sonnet"
-                             "openai/gemini-2.5-pro-exp-03-25"
-                             "openai/Qwen3-235B-A22B"
+                             "openai/cursor/claude-3.7-sonnet"
+                             "openai/qwen3-235b-a22b"
+                             "mistral/mistral-large-latest"
+                             "codestral/codestral-latest"
                              ))
 
 

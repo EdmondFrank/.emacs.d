@@ -40,3 +40,6 @@
 [submodule "site-lisp/mcp.el"]
 	path = site-lisp/mcp.el
 	url = https://github.com/lizqwerscott/mcp.el
+[submodule "site-lisp/gptel"]
+	path = site-lisp/gptel
+	url = https://github.com/karthink/gptel
