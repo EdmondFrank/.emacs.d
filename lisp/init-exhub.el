@@ -24,14 +24,24 @@
   :config
   (require 'gptel-integrations)
   (setq
-   gptel-model 'qwen3-235b-a22b
+   gptel-model 'qwen3-235b-a22b-instruct-2507
    gptel-backend (gptel-make-openai "Cursor api" ;Any name you want
                    :host "127.0.0.1:9069"
                    :endpoint "/openai/v1/chat/completions"
                    :stream t            ;for streaming responses
                    :protocol "http"
                    :key "edmondfrank" ;can be a function that returns the key
-                   :models '(qwen3-235b-a22b deepseek-r1 cursor/gpt-4o-mini cursor/gpt-4.1 cursor/gpt-4o))))
+                   :models '((step3
+                              :capabilities (tool-use json media)
+                              :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
+                                           "application/pdf" "text/plain" "text/csv" "text/html")
+                              :context-window 32000)
+                             (internvl3-78b
+                              :capabilities (tool-use json media)
+                              :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
+                                           "application/pdf" "text/plain" "text/csv" "text/html")
+                              :context-window 32000)
+                             qwen3-235b-a22b-instruct-2507 qwen3-coder-480b-a35b-instruct kimi-k2-instruct gemini-2.5-pro qwen3-235b-a22b cursor/claude-3-5-sonnet-200k cursor/o1-mini cursor/gemini-2.5-pro-exp-03-25 cursor/grok-3-mini cursor/deepseek-v3-1 cursor/gpt-4o-mini cursor/gpt-4.1 cursor/gpt-4o cursor/claude-3.7-sonnet cursor/claude-3.5-sonnet cursor/deepseek-r1))))
 
 (use-package mcp
   :load-path (lambda () (expand-file-name "site-lisp/mcp.el" user-emacs-directory))
@@ -58,6 +68,17 @@
 (global-set-key (kbd "C-c z") 'gptel-menu)
 (global-set-key (kbd "C-c x") 'gptel-aibo)
 
+;; install claude-code.el
+(use-package claude-code
+  :load-path (lambda () (expand-file-name "site-lisp/claude-code.el" user-emacs-directory))
+  :config
+  (setenv "HTTP_PROXY" "http://127.0.0.1:7890")
+  (setenv "HTTPS_PROXY" "http://127.0.0.1:7890")
+  (setq claude-code-program "gemini")
+  (setq claude-code-terminal-backend 'vterm)
+  (claude-code-mode))
+
+(global-set-key (kbd "C-c v") 'claude-code-transient)
 
 (provide 'init-exhub)
 ;;; init-exhub.el ends here

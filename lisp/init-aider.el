@@ -10,15 +10,24 @@
 (setenv "OPENAI_API_BASE" "http://localhost:9069/openai/v1")
 (setenv "OPENAI_API_KEY" "edmondfrank")
 
-(setq aider-args '("--no-auto-commits" "--model" "openai/cursor/gpt-4.1" "--weak-model" "openai/cursor/gpt-4o-mini" "--editor-model" "openai/qwen3-235b-a22b" "--map-tokens" "4096"))
+(setq aider-args '("--no-auto-commits" "--architect" "--model" "openai/kimi-k2-instruct" "--editor-model" "openai/qwen3-coder-480b-a35b-instruct" "--editor-edit-format" "editor-diff" "--map-tokens" "0"))
 
-(setq aider-popular-models '("openai/cursor/gpt-4.1"
-                             "openai/cursor/gpt-4o-mini"
+(setq aider-popular-models '("openai/gemini-2.5-pro"
+                             "openai/deepseek-r1"
                              "openai/deepseek-v3"
-                             "openai/cursor/claude-3.7-sonnet"
                              "openai/qwen3-235b-a22b"
+                             "openai/qwen3-235b-a22b-instruct-2507"
+                             "openai/qwen3-coder-480b-a35b-instruct"
+                             "openai/kimi-k2-instruct"
                              "mistral/mistral-large-latest"
                              "codestral/codestral-latest"
+                             "openai/cursor/gpt-4.1"
+                             "openai/cursor/gpt-4o-mini"
+                             "openai/cursor/gemini-2.5-pro"
+                             "openai/cursor/claude-3-5"
+                             "openai/cursor/claude-3-5-sonnet-200k"
+                             "openai/cursor/deepseek-r1"
+                             "openai/cursor/claude-3.7-sonnet"
                              ))
 
 
