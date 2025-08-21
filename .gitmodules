@@ -43,3 +43,9 @@
 [submodule "site-lisp/gptel"]
 	path = site-lisp/gptel
 	url = https://github.com/karthink/gptel
+[submodule "site-lisp/claude-code-ide.el"]
+	path = site-lisp/claude-code-ide.el
+	url = https://github.com/manzaltu/claude-code-ide.el
+[submodule "site-lisp/claude-code.el"]
+	path = site-lisp/claude-code.el
+	url = https://github.com/stevemolitor/claude-code.el
