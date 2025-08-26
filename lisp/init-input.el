@@ -9,7 +9,13 @@
        "com.apple.keylayout.ABC"
        "com.apple.inputmethod.SCIM.ITABC")
       (sis-global-respect-mode)
-      (sis-global-cursor-color-mode))
+      (sis-global-cursor-color-mode)
+      (use-package rime
+        :custom
+        (rime-emacs-module-header-root "/Applications/Emacs.app/Contents/Resources/include/")
+        (rime-librime-root "/opt/homebrew")
+        (default-input-method "rime")
+        (rime-show-candidate 'posframe)))
   (when (eq system-type 'gnu/linux)
     ;; Linux specific settings
     (add-to-list 'load-path (expand-file-name "site-lisp/emacs-rime" user-emacs-directory))
