@@ -3,7 +3,7 @@
 ;;; Code:
 ;;custom keybinding
 (global-set-key (kbd "C-\\") 'toggle-input-method)
-(global-set-key (kbd "C-|") 'insert-translated-name-insert-original-translation)
+(global-set-key (kbd "C-|") 'exhub-translate-insert)
 
 (global-unset-key (kbd "S-SPC"))
 (global-set-key (kbd "S-SPC") 'set-mark-command)
