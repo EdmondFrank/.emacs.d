@@ -46,7 +46,7 @@
                               :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
                                            "application/pdf" "text/plain" "text/csv" "text/html")
                               :context-window 64000)
-                             qwen3-235b-a22b-instruct-2507 qwen3-coder-480b-a35b-instruct kimi-k2-instruct glm-4_5 gemini-2.5-pro qwen3-235b-a22b cursor/claude-3-5-sonnet-200k cursor/o1-mini cursor/gemini-2.5-pro-exp-03-25 cursor/grok-3-mini cursor/deepseek-v3-1 cursor/gpt-4o-mini cursor/gpt-4.1 cursor/gpt-4o cursor/claude-3.7-sonnet cursor/claude-3.5-sonnet cursor/deepseek-r1))))
+                             qwen3-235b-a22b-instruct-2507 qwen3-coder-480b-a35b-instruct kimi-k2-instruct deepseek-v3_1 glm-4_5 gemini-2.5-pro qwen3-235b-a22b cursor/claude-3-5-sonnet-200k cursor/o1-mini cursor/gemini-2.5-pro-exp-03-25 cursor/grok-3-mini cursor/deepseek-v3-1 cursor/gpt-4o-mini cursor/gpt-4.1 cursor/gpt-4o cursor/claude-3.7-sonnet cursor/claude-3.5-sonnet cursor/deepseek-r1))))
 
 (use-package mcp
   :load-path (lambda () (expand-file-name "site-lisp/mcp.el" user-emacs-directory))

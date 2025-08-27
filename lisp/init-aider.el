@@ -10,13 +10,14 @@
 (setenv "OPENAI_API_BASE" "http://localhost:9069/openai/v1")
 (setenv "OPENAI_API_KEY" "edmondfrank")
 
-(setq aider-args '("--no-auto-commits" "--architect" "--model" "openai/kimi-k2-instruct" "--editor-model" "openai/qwen3-coder-480b-a35b-instruct" "--editor-edit-format" "editor-diff" "--map-tokens" "0"))
+(setq aider-args '("--no-auto-commits" "--architect" "--model" "openai/deepseek-v3_1" "--editor-model" "openai/qwen3-coder-480b-a35b-instruct" "--editor-edit-format" "editor-diff" "--map-tokens" "0"))
 
 (setq aider-popular-models '("openai/glm-4_5"
                              "openai/glm-4_5v"
                              "openai/gemini-2.5-pro"
                              "openai/deepseek-r1"
                              "openai/deepseek-v3"
+                             "openai/deepseek-v3_1"
                              "openai/gpt-oss-120b"
                              "openai/qwen3-235b-a22b"
                              "openai/qwen3-235b-a22b-instruct-2507"
