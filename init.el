@@ -130,6 +130,7 @@
 (require 'init-yaml)
 (require 'init-docker)
 (require 'init-terraform)
+(require 'init-remote)
 ;; (require 'init-nix)
 (maybe-require-package 'nginx-mode)
 (maybe-require-package 'just-mode)
@@ -246,8 +247,6 @@
 
 ;;Custom settings
 
-(require-package 'tramp)
-
 (require-package 'auto-complete)
 
 (require-package 'vterm)
@@ -270,9 +269,6 @@
 (setq recentf-max-menu-items 250)
 (put 'scroll-left 'disabled nil)
 (setq org-startup-folded t)
-(setq tramp-auto-save-directory "~/tmp/tramp/")
-(setq tramp-chunksize 1024)
-(setq remote-file-name-inhibit-cache nil)
 (setq ivy-rich-parse-remote-buffer nil)
 (setq-default bidi-display-reordering nil)
 (setq vc-handled-backends '(Git))
