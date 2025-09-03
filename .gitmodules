@@ -49,3 +49,6 @@
 [submodule "site-lisp/claude-code.el"]
 	path = site-lisp/claude-code.el
 	url = https://github.com/stevemolitor/claude-code.el
+[submodule "site-lisp/probe.el"]
+	path = site-lisp/probe.el
+	url = https://github.com/EdmondFrank/probe.el

@@ -83,6 +83,19 @@
   (setq claude-code-terminal-backend 'vterm)
   (claude-code-mode))
 
+(use-package probe-search
+  :load-path (lambda () (expand-file-name "site-lisp/probe.el" user-emacs-directory))
+  :bind (("C-c s s" . probe-search)
+         ("C-c s q" . probe-query)
+         ("C-c s m" . probe-query-method)
+         ("C-c s c" . probe-query-class)
+         ("C-c s f" . probe-query-function))
+  :config
+  (setq probe-search-command "probe"
+        probe-search-use-project-root t
+        probe-search-include-tests nil
+        probe-search-max-results 100))
+
 (global-set-key (kbd "C-c v") 'claude-code-transient)
 
 ;; install claude-code-ide.el
