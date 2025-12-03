@@ -19,6 +19,7 @@
                              "openai/deepseek-r1"
                              "openai/deepseek-v3"
                              "openai/deepseek-v3_1"
+                             "openai/deepseek-v3.2"
                              "openai/deepseek-v3.2-exp"
                              "openai/deepseek-v3_1-terminus"
                              "openai/gpt-oss-120b"
@@ -31,15 +32,11 @@
                              "openai/minimax-m2-preview"
                              "openai/minimax/minimax-m2:free"
                              "openai/kimi-k2-instruct"
+                             "openai/kimi-k2-thinking"
+                             "openai/kimi-for-coding"
+                             "openai/openrouter/polaris-alpha"
                              "mistral/mistral-large-latest"
                              "codestral/codestral-latest"
-                             "openai/cursor/gpt-4.1"
-                             "openai/cursor/gpt-4o-mini"
-                             "openai/cursor/gemini-2.5-pro"
-                             "openai/cursor/claude-3-5"
-                             "openai/cursor/claude-3-5-sonnet-200k"
-                             "openai/cursor/deepseek-r1"
-                             "openai/cursor/claude-3.7-sonnet"
                              ))
 
 
