@@ -19,7 +19,7 @@
 
 (setq eaf-proxy-type "http")
 (setq eaf-proxy-host "127.0.0.1")
-(setq eaf-proxy-port "1081")
+(setq eaf-proxy-port "7890")
 (setq eaf-git-diff-render-by-delta t)
 (setq eaf-git-diff-show-with-imenu-list t)
 

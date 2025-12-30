@@ -52,3 +52,6 @@
 [submodule "site-lisp/probe.el"]
 	path = site-lisp/probe.el
 	url = https://github.com/EdmondFrank/probe.el
+[submodule "site-lisp/ai-code-interface.el"]
+	path = site-lisp/ai-code-interface.el
+	url = https://github.com/tninja/ai-code-interface.el

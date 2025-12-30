@@ -215,6 +215,8 @@
 
 (add-to-list 'load-path (expand-file-name "site-lisp/kubel" user-emacs-directory))
 (require 'kubel)
+;; 如果不需要kubectl TRAMP功能，可以禁用
+(setq kubel-kubectl "/Users/edmondfrank/.docker/bin/kubectl") ; 设置正确的kubectl路径
 
 (add-to-list 'load-path (expand-file-name "site-lisp/yasnippet" user-emacs-directory))
 (require 'yasnippet)
