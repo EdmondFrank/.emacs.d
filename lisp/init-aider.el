@@ -12,7 +12,7 @@
 (setenv "OPENAI_API_BASE" "http://localhost:9069/openai/v1")
 (setenv "OPENAI_API_KEY" "edmondfrank")
 
-(setq aider-args '("--linear-output" "--no-auto-commits" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--architect" "--model" "openai/deepseek-v3_1-terminus" "--editor-model" "openai/kimi-k2-instruct" "--weak-model" "openai/minimax-m2" "--editor-edit-format" "editor-diff" "--map-tokens" "2048"))
+(setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--agent" "--use-enhanced-map" "--enable-context-compaction" "--map-tokens" "0"))
 ;; (setq aider-args '("--no-auto-commits" "--yes" "--architect" "--model" "openai/minimax-m2" "--editor-model" "openai/qwen3-next-80b-a3b-instruct" "--weak-model" "openai/kimi-k2-instruct" "--editor-edit-format" "editor-diff" "--map-tokens" "0"))
 
 (setq aider-popular-models '("openai/glm-4_5"

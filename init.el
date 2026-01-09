@@ -240,6 +240,7 @@
 (require 'init-aider)
 (require 'init-emigo)
 (require 'init-exhub)
+(require 'init-agent)
 (provide 'init)
 ;; Local Variables:
 ;; coding: utf-8

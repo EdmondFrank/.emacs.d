@@ -102,6 +102,7 @@
   :bind ("C-c C-a" . ai-code-menu)      ; Set your favorite keybinding
   :config
   (ai-code-set-backend  'opencode) ;; use open-code as backend
+  (setq claude-code-terminal-backend 'vterm)
   ;; Optional: Set up Magit integration for AI commands in Magit popups
   (with-eval-after-load 'magit
     (ai-code-magit-setup-transients)))
