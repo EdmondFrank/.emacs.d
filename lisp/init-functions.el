@@ -146,5 +146,35 @@
             (message "No supported file manager found")))))
      (t (message "Unsupported operating system")))))
 
+(defun projectile-copy-relative-path ()
+  "Find a file using projectile and copy its relative path to clipboard.
+This function uses projectile's file finding mechanism but instead of
+opening the file, it copies the relative path from the project root to
+the kill ring."
+  (interactive)
+  (require 'projectile)
+  (let* ((project-root (projectile-project-root))
+         (files (projectile-project-files project-root))
+         (selected-file (projectile-completing-read "Find file to copy path: " files)))
+    (when selected-file
+      (let ((relative-path (file-relative-name selected-file project-root)))
+        (kill-new relative-path)
+        (message "Copied relative path: %s" relative-path)))))
+
+(defun projectile-insert-relative-path ()
+  "Find a file using projectile and insert its relative path at point.
+This function uses projectile's file finding mechanism but instead of
+opening the file, it inserts the relative path from the project root at
+the current cursor position."
+  (interactive)
+  (require 'projectile)
+  (let* ((project-root (projectile-project-root))
+         (files (projectile-project-files project-root))
+         (selected-file (projectile-completing-read "Find file to insert path: " files)))
+    (when selected-file
+      (let ((relative-path (file-relative-name selected-file project-root)))
+        (insert relative-path)
+        (message "Inserted relative path: %s" relative-path)))))
+
 (provide 'init-functions)
 ;;; init-functions.el ends here

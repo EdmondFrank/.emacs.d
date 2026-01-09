@@ -22,6 +22,9 @@
 (global-set-key (kbd "C-f") 'deadgrep)
 
 (global-set-key (kbd "C-`") 'projectile-find-file)
+(global-set-key (kbd "C-~") 'projectile-copy-relative-path)
+(global-set-key (kbd "C-c @") 'projectile-insert-relative-path)
+
 
 (global-set-key (kbd "C-S-f") 'xref-find-references)
 (global-set-key (kbd "C-.") 'dumb-jump-go)
