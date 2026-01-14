@@ -20,7 +20,8 @@
   "Find a file using projectile and insert its relative path at point.
 This function uses projectile's file finding mechanism but instead of
 opening the file, it inserts the relative path from the project root at
-the current cursor position."
+the current cursor position. Also adds the selected file to the current
+agent session."
   (interactive)
   (require 'projectile)
   (let* ((project-root (projectile-project-root))
@@ -28,7 +29,7 @@ the current cursor position."
          (selected-file (projectile-completing-read "Find file to insert path: " files)))
     (when selected-file
       (let ((relative-path (file-relative-name selected-file project-root)))
-        (insert relative-path)
+        (insert (concat "@" relative-path))
         (message "Inserted relative path: %s" relative-path)))))
 
 ;;;###autoload
