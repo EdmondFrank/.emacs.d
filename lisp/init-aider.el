@@ -12,8 +12,10 @@
 (setenv "OPENAI_API_BASE" "http://localhost:9069/openai/v1")
 (setenv "OPENAI_API_KEY" "edmondfrank")
 
-(setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--agent" "--use-enhanced-map" "--enable-context-compaction" "--map-tokens" "0"))
-;; (setq aider-args '("--no-auto-commits" "--yes" "--architect" "--model" "openai/minimax-m2" "--editor-model" "openai/qwen3-next-80b-a3b-instruct" "--weak-model" "openai/kimi-k2-instruct" "--editor-edit-format" "editor-diff" "--map-tokens" "0"))
+(setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2-instruct" "--agent" "--use-enhanced-map" "--enable-context-compaction" "--map-tokens" "0"))
+
+
+;; (setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/glm-4.7" "--editor-model" "openai/kimi-k2-instruct" "--weak-model" "openai/deepseek-v3_1-terminus" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
 
 (setq aider-popular-models '("openai/glm-4_5"
                              "openai/glm-4.6"
@@ -37,12 +39,14 @@
                              "openai/minimax-m2.1"
                              "openai/minimax-m2-preview"
                              "openai/minimax/minimax-m2:free"
+                             "openai/kimi-k2.5"
                              "openai/kimi-k2-instruct"
                              "openai/kimi-k2-thinking"
                              "openai/kimi-for-coding"
                              "openai/openrouter/polaris-alpha"
                              "mistral/mistral-large-latest"
                              "codestral/codestral-latest"
+                             "anthropic/claude-sonnet-4-5-20250929"
                              ))
 
 

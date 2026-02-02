@@ -146,5 +146,58 @@
             (message "No supported file manager found")))))
      (t (message "Unsupported operating system")))))
 
+(defun org-copy-block-content ()
+  "Copy the content of the org block at point without delimiters.
+Works with code blocks (#+BEGIN_SRC) and quote blocks (#+BEGIN_QUOTE)."
+  (interactive)
+  (let* ((element (org-element-context))
+         (type (org-element-type element)))
+    ;; If we're at a paragraph inside a block, go up to find the block
+    (when (eq type 'paragraph)
+      (setq element (org-element-property :parent element))
+      (setq type (org-element-type element)))
+
+    (cond
+     ;; Handle source blocks
+     ((eq type 'src-block)
+      (let ((value (org-element-property :value element)))
+        (kill-new value)
+        (message "Copied code block content (%d chars)" (length value))))
+
+     ;; Handle quote blocks
+     ((eq type 'quote-block)
+      (let* ((contents-begin (org-element-property :contents-begin element))
+             (contents-end (org-element-property :contents-end element)))
+        (if (and contents-begin contents-end)
+            (let ((content (buffer-substring-no-properties
+                            contents-begin contents-end)))
+              (kill-new content)
+              (message "Copied quote block content (%d chars)" (length content)))
+          (message "Quote block is empty"))))
+
+     ;; Handle example blocks
+     ((eq type 'example-block)
+      (let ((value (org-element-property :value element)))
+        (kill-new value)
+        (message "Copied example block content (%d chars)" (length value))))
+
+     ;; Handle verse blocks
+     ((eq type 'verse-block)
+      (let* ((contents-begin (org-element-property :contents-begin element))
+             (contents-end (org-element-property :contents-end element)))
+        (if (and contents-begin contents-end)
+            (let ((content (buffer-substring-no-properties
+                            contents-begin contents-end)))
+              (kill-new content)
+              (message "Copied verse block content (%d chars)" (length content)))
+          (message "Verse block is empty"))))
+
+     (t
+      (message "Not inside a supported block (src, quote, example, verse)")))))
+
+;; Bind to a key in org-mode (optional)
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-c C-x w") 'org-copy-block-content))
+
 (provide 'init-functions)
 ;;; init-functions.el ends here

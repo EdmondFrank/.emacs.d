@@ -80,3 +80,4 @@ snails.db
 .aider*
 .env
 /projectile.cache
+.cecli*
