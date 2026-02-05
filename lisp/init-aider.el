@@ -49,6 +49,9 @@
                              "openai/openrouter/polaris-alpha"
                              "mistral/mistral-large-latest"
                              "codestral/codestral-latest"
+                             "anthropic/claude-opus-4-5-20251101"
+                             "anthropic/claude-sonnet-4-20250514"
+                             "anthropic/claude-haiku-4-5-20251001"
                              "anthropic/claude-sonnet-4-5-20250929"
                              ))
 

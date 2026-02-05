@@ -46,7 +46,29 @@
                               :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
                                            "application/pdf" "text/plain" "text/csv" "text/html")
                               :context-window 64000)
-                             claude-sonnet-4-5-20250929 tngtech/deepseek-r1t2-chimera:free minimax-m2 minimax-m2-preview qwen3-235b-a22b-instruct-2507 qwen3-coder-480b-a35b-instruct kimi-k2.5 kimi-k2-instruct kimi-k2-thinking deepseek-v3_1 glm-4_5 glm-4.6 deepseek-v3.2 deepseek-v3.2-exp deepseek-v3_1-terminus gemini-2.5-pro qwen3-next-80b-a3b-instruct qwen3-next-80b-a3b-thinking qwen3-235b-a22b))))
+                             claude-opus-4-5-20251101
+                             claude-sonnet-4-5-20250929
+                             claude-haiku-4-5-20251001
+                             claude-sonnet-4-5-20250929
+                             tngtech/deepseek-r1t2-chimera:free
+                             minimax-m2
+                             minimax-m2-preview
+                             qwen3-235b-a22b-instruct-2507
+                             qwen3-coder-480b-a35b-instruct
+                             kimi-k2.5
+                             kimi-k2-instruct
+                             kimi-k2-thinking
+                             deepseek-v3_1
+                             glm-4_5
+                             glm-4.6
+                             deepseek-v3.2
+                             deepseek-v3.2-exp
+                             deepseek-v3_1-terminus
+                             gemini-2.5-pro
+                             qwen3-next-80b-a3b-instruct
+                             qwen3-next-80b-a3b-thinking
+                             qwen3-235b-a22b)))
+  )
 
 (use-package mcp
   :load-path (lambda () (expand-file-name "site-lisp/mcp.el" user-emacs-directory))
