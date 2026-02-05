@@ -11,11 +11,14 @@
 
 (setenv "OPENAI_API_BASE" "http://localhost:9069/openai/v1")
 (setenv "OPENAI_API_KEY" "edmondfrank")
+(setenv "ANTHROPIC_API_BASE" "http://localhost:9069/anthropic")
+(setenv "ANTHROPIC_API_KEY" "edmondfrank")
+(setenv "LITELLM_ANTHROPIC_DISABLE_URL_SUFFIX" "false")
 
-(setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2-instruct" "--agent" "--use-enhanced-map" "--enable-context-compaction" "--map-tokens" "0"))
+;; (setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/minimax-m2.1" "--agent" "--use-enhanced-map" "--enable-context-compaction" "--map-tokens" "0"))
 
 
-;; (setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/glm-4.7" "--editor-model" "openai/kimi-k2-instruct" "--weak-model" "openai/deepseek-v3_1-terminus" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
+(setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2.5" "--editor-model" "openai/kimi-k2-instruct" "--weak-model" "openai/qwen3-next-80b-a3b-instruct" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
 
 (setq aider-popular-models '("openai/glm-4_5"
                              "openai/glm-4.6"
