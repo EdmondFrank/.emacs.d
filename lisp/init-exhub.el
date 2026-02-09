@@ -24,7 +24,7 @@
   :config
   (require 'gptel-integrations)
   (setq
-   gptel-model 'qwen3-next-80b-a3b-instruct
+   gptel-model 'kimi-k2.5
    gptel-backend (gptel-make-openai "Exhub api" ;Any name you want
                    :host "127.0.0.1:9069"
                    :endpoint "/openai/v1/chat/completions"
@@ -46,16 +46,21 @@
                               :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
                                            "application/pdf" "text/plain" "text/csv" "text/html")
                               :context-window 64000)
+                             (kimi-k2.5
+                              :capabilities (tool-use json media)
+                              :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
+                                           "application/pdf" "text/plain" "text/csv" "text/html")
+                              :context-window 200000)
                              claude-opus-4-5-20251101
                              claude-sonnet-4-5-20250929
                              claude-haiku-4-5-20251001
-                             claude-sonnet-4-5-20250929
+                             claude-opus-4-6-v1
                              tngtech/deepseek-r1t2-chimera:free
                              minimax-m2
+                             minimax-m2.1
                              minimax-m2-preview
                              qwen3-235b-a22b-instruct-2507
                              qwen3-coder-480b-a35b-instruct
-                             kimi-k2.5
                              kimi-k2-instruct
                              kimi-k2-thinking
                              deepseek-v3_1
@@ -74,26 +79,34 @@
   :load-path (lambda () (expand-file-name "site-lisp/mcp.el" user-emacs-directory))
   :after gptel
   :custom (mcp-hub-servers
-           `(("probe" . (:command "bunx" :args ("-y" "@buger/probe-mcp")))
-             ("commander" . (:command "bunx" :args ("-y" "@wonderwhy-er/desktop-commander")))
-             ("web-scout" . (
-                             :command "bunx"
-                             :args ("-y" "@pinkpixel/web-scout-mcp")
-                             :env (
-                                   :HTTP_PROXY "https://127.0.0.1:7890"
-                                   :HTTPS_PROXY "https://127.0.0.1:7890")))))
+           `(("desktop" . (:url "http://localhost:3456/mcp/f3e0a28a-ef35-4a49-afbb-869b0373b389"))
+             ("map" . (:url "http://localhost:3456/mcp/7da2cc57-ef32-4b80-88f3-7fc0012f9831"))
+             ("browser" . (:url "http://localhost:3456/mcp/81a7360b-817f-433d-8aa3-3f3c949ca8de"))
+             ("social" . (:url "http://localhost:3456/mcp/42c094b0-ea63-4b43-a2e3-67f18f07676c"))
+             ("github" . (:url "http://localhost:3456/mcp/1447d840-6749-46ff-9a54-152d26b04c67"))
+             ("memory" . (:url "http://localhost:3456/mcp/2f74ee22-f6bd-4e91-9cec-eadad1a5f6e5"))
+             ("design" . (:url "http://localhost:3456/mcp/d0800506-2ad4-465a-b103-60a9d6858a47"))
+             ))
   :config (require 'mcp-hub)
   :hook (after-init . mcp-hub-start-all-server))
 
-(use-package gptel-aibo
-  :load-path (lambda () (expand-file-name "site-lisp/gptel-aibo" user-emacs-directory))
-  :after (gptel)
+(use-package gptel-agent
+  :load-path (lambda () (expand-file-name "site-lisp/gptel-agent" user-emacs-directory))
+  :after gptel
+  :config (gptel-agent-update))
+
+(maybe-require-package 'templatel)
+(use-package gptel-prompts
+  :load-path (lambda () (expand-file-name "site-lisp/gptel-prompts" user-emacs-directory))
+  :after gptel
+  :demand t
   :config
-  (define-key gptel-aibo-mode-map
-              (kbd "C-c /") #'gptel-aibo-apply-last-suggestions))
+  (gptel-prompts-update)
+  ;; Ensure prompts are updated if prompt files change
+  (gptel-prompts-add-update-watchers))
 
 (global-set-key (kbd "C-c z") 'gptel-menu)
-(global-set-key (kbd "C-c x") 'gptel-aibo)
+(global-set-key (kbd "C-c x") 'gptel-agent)
 
 (use-package probe-search
   :load-path (lambda () (expand-file-name "site-lisp/probe.el" user-emacs-directory))

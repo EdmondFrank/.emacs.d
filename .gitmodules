@@ -34,9 +34,6 @@
 [submodule "site-lisp/yasnippet"]
 	path = site-lisp/yasnippet
 	url = https://github.com/joaotavora/yasnippet
-[submodule "site-lisp/gptel-aibo"]
-	path = site-lisp/gptel-aibo
-	url = https://github.com/dolmens/gptel-aibo
 [submodule "site-lisp/mcp.el"]
 	path = site-lisp/mcp.el
 	url = https://github.com/lizqwerscott/mcp.el
@@ -55,3 +52,9 @@
 [submodule "site-lisp/ai-code-interface.el"]
 	path = site-lisp/ai-code-interface.el
 	url = https://github.com/tninja/ai-code-interface.el
+[submodule "site-lisp/gptel-agent"]
+	path = site-lisp/gptel-agent
+	url = https://github.com/karthink/gptel-agent
+[submodule "site-lisp/gptel-prompts"]
+	path = site-lisp/gptel-prompts
+	url = https://github.com/jwiegley/gptel-prompts
