@@ -463,5 +463,4 @@
     | 保存知识条目 | 写入 `/knowledge-base/` |
     | 跟踪任务进度 | 写入 `/task-context/` |
 
-    当前会话时间：{{ current_time }}
-    {% if user_id %}用户标识：{{ user_id }}{% endif %}
+    当前会话时间：{{datetime}}
