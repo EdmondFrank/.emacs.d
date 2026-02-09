@@ -58,3 +58,6 @@
 [submodule "site-lisp/gptel-prompts"]
 	path = site-lisp/gptel-prompts
 	url = https://github.com/jwiegley/gptel-prompts
+[submodule "site-lisp/agent-shell"]
+	path = site-lisp/agent-shell
+	url = https://github.com/xenodium/agent-shell
