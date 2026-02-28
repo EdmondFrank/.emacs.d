@@ -52,12 +52,15 @@
                                            "application/pdf" "text/plain" "text/csv" "text/html")
                               :context-window 200000)
                              claude-opus-4-5-20251101
+                             claude-sonnet-4-20250514
                              claude-sonnet-4-5-20250929
                              claude-haiku-4-5-20251001
-                             claude-opus-4-6-v1
+                             claude-opus-4-6
+                             claude-sonnet-4-6
                              tngtech/deepseek-r1t2-chimera:free
                              minimax-m2
                              minimax-m2.1
+                             minimax-m2.5
                              minimax-m2-preview
                              qwen3-235b-a22b-instruct-2507
                              qwen3-coder-480b-a35b-instruct
@@ -66,6 +69,7 @@
                              deepseek-v3_1
                              glm-4_5
                              glm-4.6
+                             glm-5
                              deepseek-v3.2
                              deepseek-v3.2-exp
                              deepseek-v3_1-terminus
@@ -83,9 +87,11 @@
              ("map" . (:url "http://localhost:3456/mcp/7da2cc57-ef32-4b80-88f3-7fc0012f9831"))
              ("browser" . (:url "http://localhost:3456/mcp/81a7360b-817f-433d-8aa3-3f3c949ca8de"))
              ("social" . (:url "http://localhost:3456/mcp/42c094b0-ea63-4b43-a2e3-67f18f07676c"))
+             ("gitee" . (:url "http://localhost:3456/mcp/28236dd1-1e25-4394-9ab2-0690a8bbba13"))
              ("github" . (:url "http://localhost:3456/mcp/1447d840-6749-46ff-9a54-152d26b04c67"))
              ("memory" . (:url "http://localhost:3456/mcp/2f74ee22-f6bd-4e91-9cec-eadad1a5f6e5"))
              ("design" . (:url "http://localhost:3456/mcp/d0800506-2ad4-465a-b103-60a9d6858a47"))
+             ("agent" . (:url "http://localhost:3456/mcp/e8707d4e-f0b2-481f-a4d1-c7184a51f392"))
              ))
   :config (require 'mcp-hub)
   :hook (after-init . mcp-hub-start-all-server))
