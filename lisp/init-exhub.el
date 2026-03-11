@@ -69,6 +69,7 @@
                              deepseek-v3_1
                              glm-4_5
                              glm-4.6
+                             glm-4.7
                              glm-5
                              deepseek-v3.2
                              deepseek-v3.2-exp
@@ -84,6 +85,7 @@
   :after gptel
   :custom (mcp-hub-servers
            `(("desktop" . (:url "http://localhost:3456/mcp/f3e0a28a-ef35-4a49-afbb-869b0373b389"))
+             ("ci" . (:url "http://localhost:3456/mcp/4b826692-5de4-4181-90cf-70349ce7eb7a"))
              ("map" . (:url "http://localhost:3456/mcp/7da2cc57-ef32-4b80-88f3-7fc0012f9831"))
              ("browser" . (:url "http://localhost:3456/mcp/81a7360b-817f-433d-8aa3-3f3c949ca8de"))
              ("social" . (:url "http://localhost:3456/mcp/42c094b0-ea63-4b43-a2e3-67f18f07676c"))
@@ -92,6 +94,7 @@
              ("memory" . (:url "http://localhost:3456/mcp/2f74ee22-f6bd-4e91-9cec-eadad1a5f6e5"))
              ("design" . (:url "http://localhost:3456/mcp/d0800506-2ad4-465a-b103-60a9d6858a47"))
              ("agent" . (:url "http://localhost:3456/mcp/e8707d4e-f0b2-481f-a4d1-c7184a51f392"))
+             ("database". (:url "http://localhost:3456/mcp/986d5c79-2c8c-4f1d-a4e4-009344d2afa4"))
              ))
   :config (require 'mcp-hub)
   :hook (after-init . mcp-hub-start-all-server))
