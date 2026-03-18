@@ -17,12 +17,15 @@
 
 ;; (setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/minimax-m2.1" "--agent" "--use-enhanced-map" "--enable-context-compaction" "--map-tokens" "0"))
 
+;; --analytics-disable --no-auto-commits --no-show-model-warnings --yes-always --model openai/kimi-k2.5 --editor-model openai/kimi-k2-instruct --editor-edit-format editor-diff --map-tokens 0
 
-(setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--no-auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2.5" "--editor-model" "openai/kimi-k2-instruct" "--weak-model" "openai/qwen3-next-80b-a3b-instruct" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
+(setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2.5" "--editor-model" "anthropic/claude-sonnet-4-20250514" "--weak-model" "openai/minimax-m2.5" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
 
 (setq aider-popular-models '("openai/glm-4_5"
                              "openai/glm-4.6"
                              "openai/glm-4.7"
+                             "openai/glm-5"
+                             "openai/glm-5-turbo"
                              "openai/glm-4_5v"
                              "openai/gemini-2.5-pro"
                              "openai/deepseek-r1"
@@ -49,6 +52,8 @@
                              "openai/openrouter/polaris-alpha"
                              "mistral/mistral-large-latest"
                              "codestral/codestral-latest"
+                             "anthropic/claude-opus-4-6"
+                             "anthropic/claude-sonnet-4-6"
                              "anthropic/claude-opus-4-5-20251101"
                              "anthropic/claude-sonnet-4-20250514"
                              "anthropic/claude-haiku-4-5-20251001"
