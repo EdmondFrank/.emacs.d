@@ -19,12 +19,13 @@
 
 ;; --analytics-disable --no-auto-commits --no-show-model-warnings --yes-always --model openai/kimi-k2.5 --editor-model openai/kimi-k2-instruct --editor-edit-format editor-diff --map-tokens 0
 
-(setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--auto-accept-architect" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2.5" "--editor-model" "anthropic/claude-sonnet-4-20250514" "--weak-model" "openai/minimax-m2.5" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
+(setq aider-args '("--command-prefix" "rtk" "--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--auto-accept-architect" "--agent" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2.5" "--editor-model" "anthropic/claude-sonnet-4-20250514" "--weak-model" "openai/minimax-m2.5" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
 
 (setq aider-popular-models '("openai/glm-4_5"
                              "openai/glm-4.6"
                              "openai/glm-4.7"
                              "openai/glm-5"
+                             "openai/glm-5.1"
                              "openai/glm-5-turbo"
                              "openai/glm-4_5v"
                              "openai/gemini-2.5-pro"
@@ -43,6 +44,8 @@
                              "openai/tngtech/deepseek-r1t2-chimera:free"
                              "openai/minimax-m2"
                              "openai/minimax-m2.1"
+                             "openai/minimax-m2.5"
+                             "openai/minimax-m2.7"
                              "openai/minimax-m2-preview"
                              "openai/minimax/minimax-m2:free"
                              "openai/kimi-k2.5"
