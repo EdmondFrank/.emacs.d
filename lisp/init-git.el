@@ -15,7 +15,6 @@
 
 (when (maybe-require-package 'magit)
   (setq-default magit-diff-refine-hunk 'all)
-  (setq-default magit-diff-visit-prefer-worktree t)
 
   (sanityinc/fullframe-mode 'magit-status-mode)
 
@@ -39,7 +38,8 @@
 
 
 (with-eval-after-load 'magit
-  (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up))
+  (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up)
+  (define-key magit-diff-section-map (kbd "RET") #'magit-diff-visit-worktree-file))
 
 (maybe-require-package 'magit-todos)
 

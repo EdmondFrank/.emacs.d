@@ -16,8 +16,10 @@
 (require 'exhub-agent)
 (require 'exhub-file)
 (require 'exhub-fim)
+(require 'exhub-vault)
 
 (setq exhub-fim-provider 'openai-compatible)
+(add-hook 'org-mode-hook #'exhub-vault-mode)
 
 (use-package gptel
   :load-path (lambda () (expand-file-name "site-lisp/gptel" user-emacs-directory))
