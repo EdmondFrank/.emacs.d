@@ -41,6 +41,8 @@
                              "openai/qwen3-next-80b-a3b-thinking"
                              "openai/qwen3-next-80b-a3b-instruct"
                              "openai/qwen3-coder-480b-a35b-instruct"
+                             "openai/qwen3-coder-next"
+                             "openai/qwen3.5-27b-claude-4.6-opus-reasoning-distilled"
                              "openai/tngtech/deepseek-r1t2-chimera:free"
                              "openai/minimax-m2"
                              "openai/minimax-m2.1"

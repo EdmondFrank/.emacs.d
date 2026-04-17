@@ -238,9 +238,9 @@
 (require 'init-lsp-bridge)
 (require 'init-citre)
 (require 'init-aider)
-(require 'init-emigo)
 (require 'init-exhub)
 (require 'init-agent)
+(require 'init-appine)
 (provide 'init)
 ;; Local Variables:
 ;; coding: utf-8

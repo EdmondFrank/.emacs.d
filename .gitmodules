@@ -28,9 +28,6 @@
 [submodule "site-lisp/aider.el"]
 	path = site-lisp/aider.el
 	url = https://github.com/tninja/aider.el.git
-[submodule "site-lisp/emigo"]
-	path = site-lisp/emigo
-	url = https://github.com/MatthewZMD/emigo.git
 [submodule "site-lisp/yasnippet"]
 	path = site-lisp/yasnippet
 	url = https://github.com/joaotavora/yasnippet
@@ -61,3 +58,6 @@
 [submodule "site-lisp/agent-shell"]
 	path = site-lisp/agent-shell
 	url = https://github.com/xenodium/agent-shell
+[submodule "site-lisp/appine"]
+	path = site-lisp/appine
+	url = https://github.com/chaoswork/appine

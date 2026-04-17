@@ -81,3 +81,4 @@ snails.db
 .env
 /projectile.cache
 .cecli*
+.agent-shell/
