@@ -4,6 +4,7 @@
 ;;custom keybinding
 (global-set-key (kbd "C-\\") 'toggle-input-method)
 (global-set-key (kbd "C-|") 'exhub-translate-insert)
+(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
 
 (global-unset-key (kbd "S-SPC"))
 (global-set-key (kbd "S-SPC") 'set-mark-command)
