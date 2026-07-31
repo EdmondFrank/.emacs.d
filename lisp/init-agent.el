@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (use-package agent-shell
-  :ensure t
+  :load-path (lambda () (expand-file-name "site-lisp/agent-shell" user-emacs-directory))
   :config
   (require 'transient))
 
