@@ -22,6 +22,11 @@
 
 ;;; Code:
 
+;; Enable external image conversion (e.g. webp) for inline preview.
+;; Emacs's built-in webp support may be unavailable at compile time, in
+;; which case the external converter (ffmpeg) handles webp images.
+(setq image-use-external-converter t)
+
 (when *is-a-mac*
   (maybe-require-package 'grab-mac-link))
 
