@@ -15,7 +15,7 @@
 ;; Try use counsel-grep to replace swiper
 
 (global-unset-key (kbd "C-x b"))
-(global-set-key (kbd "C-x b") 'blink-search)
+(global-set-key (kbd "C-x b") 'blink-search-exhub)
 
 (global-unset-key (kbd "C-s"))
 (global-set-key (kbd "C-s") 'swiper-isearch)
