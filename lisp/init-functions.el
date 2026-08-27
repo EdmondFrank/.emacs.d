@@ -30,6 +30,28 @@
         (insert filename)
         (clipboard-kill-region (point-min) (point-max)))
       (message filename))))
+
+(defun put-file-rel-on-clipboard ()
+  "Put the current file's path relative to the project root on the clipboard.
+Uses `projectile-project-root' when available; otherwise falls back to
+the directory containing .git (if any)."
+  (interactive)
+  (let* ((filename (or (buffer-file-name)
+                       (when (eq major-mode 'dired-mode)
+                         (dired-get-filename))))
+         (project-root (or (and (fboundp 'projectile-project-root)
+                                (ignore-errors (projectile-project-root)))
+                           (and filename
+                                (ignore-errors
+                                  (locate-dominating-file filename ".git"))))))
+    (unless filename
+      (user-error "No file associated with the current buffer"))
+    (unless project-root
+      (user-error "Could not determine project root for %s" filename))
+    (let ((relative-path (file-relative-name filename project-root)))
+      (kill-new relative-path)
+      (message "Copied relative path: %s" relative-path))))
+
 (defun copy-diff-region ()
   "Copy diff region without + or - markers."
   (interactive)
