@@ -1,6 +1,8 @@
 ;;; init-agent.el --- Basic support for Agent-shell -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
+(require 'exhub-translate)
+
 (use-package agent-shell
   ;; `use-package-always-defer' is set globally (see init-package.el), which
   ;; would defer agent-shell forever: the load-path checkout has no autoloads
@@ -14,6 +16,8 @@
   (require-package 'shell-maker)
   (setq agent-shell-show-config-icons nil)  ; no icons in agent/menu prompts
   (setq agent-shell-header-style 'text)     ; text-only header (skip SVG icon path)
+  (setq agent-shell-tool-use-expand-by-default t)
+  (setq agent-shell-thought-process-expand-by-default t)
   )
 
 ;;;###autoload
@@ -60,6 +64,28 @@ the kill ring."
 
 
 
+(defun agent-shell-fix-grammar ()
+  "Fix grammar and spelling errors in the current agent-shell prompt input.
+
+Replaces the unsubmitted input at the active shell prompt (or the region
+in the shell buffer if one is active) with the LLM-corrected version via
+the exhub-translate fix-grammar action."
+  (interactive)
+  (let* ((shell-buffer (or (agent-shell--current-shell)
+                           (user-error "Not in an agent shell buffer")))
+         (input (with-current-buffer shell-buffer (agent-shell--input))))
+    (if (null input)
+        (message "Nothing input, cancel grammar fix.")
+      (with-current-buffer shell-buffer
+        (let ((start (or (marker-position comint-accum-marker)
+                         (process-mark (get-buffer-process (current-buffer)))))
+              (end (point-max)))
+          (kill-region start end)
+          (goto-char start)
+          (exhub-translate-query-translation-with-action
+           input "origin" "EN" "fix-grammar"))))))
+
+
 ;;;###autoload
 (transient-define-prefix agent-shell-transient-menu ()
   "Transient menu for Agent Shell commands."
@@ -71,6 +97,8 @@ the kill ring."
    ["Send Content"
     ("f" "Send File (C-u: choose)" agent-shell-send-file)
     ("r" "Send Region" agent-shell-send-region)]
+   ["Exhub"
+    ("i" "Fix Grammar" agent-shell-fix-grammar)]
    [
     "Context Manage"
     ("!" "Shell command" agent-shell-insert-shell-command-output)
