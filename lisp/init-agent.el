@@ -2,9 +2,19 @@
 ;;; Commentary:
 ;;; Code:
 (use-package agent-shell
+  ;; `use-package-always-defer' is set globally (see init-package.el), which
+  ;; would defer agent-shell forever: the load-path checkout has no autoloads
+  ;; and the transient menu below references its commands.  `:demand' forces
+  ;; the package to load at startup so those commands are defined.
+  :demand t
   :load-path (lambda () (expand-file-name "site-lisp/agent-shell" user-emacs-directory))
   :config
-  (require 'transient))
+  (require 'transient)
+  (require-package 'acp)
+  (require-package 'shell-maker)
+  (setq agent-shell-show-config-icons nil)  ; no icons in agent/menu prompts
+  (setq agent-shell-header-style 'text)     ; text-only header (skip SVG icon path)
+  )
 
 ;;;###autoload
 (defun agent-shell-kill ()
