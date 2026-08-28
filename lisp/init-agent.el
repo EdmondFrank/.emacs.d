@@ -45,7 +45,7 @@ agent session."
          (selected-file (projectile-completing-read "Find file to insert path: " files)))
     (when selected-file
       (let ((relative-path (file-relative-name selected-file project-root)))
-        (insert (concat "@" relative-path))
+        (insert relative-path)
         (message "Inserted relative path: %s" relative-path)))))
 
 ;;;###autoload
