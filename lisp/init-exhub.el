@@ -17,6 +17,7 @@
 (require 'exhub-file)
 (require 'exhub-fim)
 (require 'exhub-vault)
+(require 'blink-search-exhub)
 
 (setq exhub-fim-provider 'openai-compatible)
 (add-hook 'org-mode-hook #'exhub-vault-mode)

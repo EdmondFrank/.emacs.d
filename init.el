@@ -234,7 +234,6 @@
 (require 'init-blink-search)
 (require 'init-keybindings)
 (require 'init-functions)
-(require 'init-eaf)
 (require 'init-lsp-bridge)
 (require 'init-citre)
 (require 'init-aider)

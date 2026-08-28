@@ -6,8 +6,8 @@
 
 (require 'aider)
 
-(setq aider-program (expand-file-name "miniconda3/bin/aider-ce" (getenv "HOME")))
-;; (setq aider-program (expand-file-name ".local/bin/aider" (getenv "HOME")))
+;; (setq aider-program (expand-file-name "miniconda3/bin/aider-ce" (getenv "HOME")))
+(setq aider-program (expand-file-name ".local/bin/aider" (getenv "HOME")))
 
 (setenv "OPENAI_API_BASE" "http://localhost:9069/openai/v1")
 (setenv "OPENAI_API_KEY" "edmondfrank")
@@ -19,7 +19,9 @@
 
 ;; --analytics-disable --no-auto-commits --no-show-model-warnings --yes-always --model openai/kimi-k2.5 --editor-model openai/kimi-k2-instruct --editor-edit-format editor-diff --map-tokens 0
 
-(setq aider-args '("--command-prefix" "rtk" "--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--auto-accept-architect" "--agent" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2.5" "--editor-model" "anthropic/claude-sonnet-4-20250514" "--weak-model" "openai/minimax-m2.5" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
+;; (setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--auto-accept-architect" "--architect" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2.6" "--editor-model" "openai/mimo-v2.5-pro" "--weak-model" "openai/minimax-m2.5" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
+
+(setq aider-args '("--no-auto-commits" "--no-show-model-warnings" "--auto-accept-architect" "--yes-always" "--model" "openai/deepseek-v4-pro" "--editor-model" "openai/deepseek-v4-flash" "--weak-model" "openai/deepseek-v4-flash" "--editor-edit-format" "editor-diff" "--edit-format" "diff" "--map-tokens" "0"))
 
 (setq aider-popular-models '("openai/glm-4_5"
                              "openai/glm-4.6"
@@ -35,6 +37,8 @@
                              "openai/deepseek-v3.2"
                              "openai/deepseek-v3.2-exp"
                              "openai/deepseek-v3_1-terminus"
+                             "openai/deepseek-v4-flash"
+                             "openai/deepseek-v4-pro"
                              "openai/gpt-oss-120b"
                              "openai/qwen3-235b-a22b"
                              "openai/qwen3-235b-a22b-instruct-2507"

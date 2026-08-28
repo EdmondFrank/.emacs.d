@@ -11,15 +11,15 @@
 (global-set-key (kbd "C-x a o") 'appine-open-file)
 
 (defun appine-open-pdf-advice (orig-fn file &rest args)
-  "Open PDF files with Appine instead of EAF or the default Emacs viewer."
+  "Open PDF files with Appine instead of the default Emacs viewer."
   (if (and (stringp file)
            (string-match-p "\\.pdf\\'" file)
            (called-interactively-p 'interactive))
       (appine-open-file file)
     (apply orig-fn file args)))
 
-;; Run before EAF's advice (depth 0) so PDFs go to Appine first
-(advice-add #'find-file :around #'appine-open-pdf-advice '((depth . -10)))
+;; Route PDFs opened via find-file to Appine's PDFKit viewer
+(advice-add #'find-file :around #'appine-open-pdf-advice)
 
 (provide 'init-appine)
 ;;; init-appine.el ends here
