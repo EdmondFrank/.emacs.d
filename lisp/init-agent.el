@@ -14,10 +14,12 @@
   (require 'transient)
   (require-package 'acp)
   (require-package 'shell-maker)
-  (setq agent-shell-show-config-icons nil)  ; no icons in agent/menu prompts
-  (setq agent-shell-header-style 'text)     ; text-only header (skip SVG icon path)
+  (setq agent-shell-show-config-icons nil) ; no icons in agent/menu prompts
+  (setq agent-shell-header-style 'text) ; text-only header (skip SVG icon path)
+  (setq agent-shell-show-usage-at-turn-end t)
   (setq agent-shell-tool-use-expand-by-default t)
   (setq agent-shell-thought-process-expand-by-default t)
+  (setq agent-shell-context-sources '(files region error))
   )
 
 ;;;###autoload
@@ -87,6 +89,13 @@ the exhub-translate fix-grammar action."
 
 
 ;;;###autoload
+(defun agent-shell-posframe-translate-region-zh ()
+  "Translate the region to Chinese and show the result in a posframe."
+  (interactive)
+  (exhub-translate-posframe "ZH"))
+
+
+;;;###autoload
 (transient-define-prefix agent-shell-transient-menu ()
   "Transient menu for Agent Shell commands."
   ["Agent Shell"
@@ -98,7 +107,8 @@ the exhub-translate fix-grammar action."
     ("f" "Send File (C-u: choose)" agent-shell-send-file)
     ("r" "Send Region" agent-shell-send-region)]
    ["Exhub"
-    ("i" "Fix Grammar" agent-shell-fix-grammar)]
+    ("i" "Fix Grammar" agent-shell-fix-grammar)
+    ("p" "Translate Region to Chinese (Posframe)" agent-shell-posframe-translate-region-zh)]
    [
     "Context Manage"
     ("!" "Shell command" agent-shell-insert-shell-command-output)
