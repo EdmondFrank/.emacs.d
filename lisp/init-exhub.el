@@ -135,23 +135,11 @@
         probe-search-include-tests nil
         probe-search-max-results 100))
 
-(use-package claude-code
-  :load-path (lambda () (expand-file-name "site-lisp/claude-code.el" user-emacs-directory))
-  :bind ("C-c C-v" . claude-code-transient)      ; Set your favorite keybinding
-  :config
-  (setenv "HTTP_PROXY" "http://127.0.0.1:7890")
-  (setenv "HTTPS_PROXY" "http://127.0.0.1:7890")
-  (setq claude-code-program "gemini")
-  (setq claude-code-terminal-backend 'vterm)
-  (claude-code-mode))
-
 (use-package ai-code
   :load-path (lambda () (expand-file-name "site-lisp/ai-code-interface.el" user-emacs-directory))
-  :after (claude-code)
   :bind ("C-c C-a" . ai-code-menu)      ; Set your favorite keybinding
   :config
   (ai-code-set-backend  'opencode) ;; use open-code as backend
-  (setq claude-code-terminal-backend 'vterm)
   ;; Optional: Set up Magit integration for AI commands in Magit popups
   (with-eval-after-load 'magit
     (ai-code-magit-setup-transients)))

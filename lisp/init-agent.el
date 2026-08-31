@@ -18,6 +18,7 @@
   (setq agent-shell-header-style 'text) ; text-only header (skip SVG icon path)
   (setq agent-shell-show-usage-at-turn-end t)
   (setq agent-shell-tool-use-expand-by-default t)
+  (setq agent-shell-session-restore-verbosity 'full)
   (setq agent-shell-thought-process-expand-by-default t)
   (setq agent-shell-context-sources '(files region error))
   )
@@ -102,10 +103,16 @@ the exhub-translate fix-grammar action."
    ["Shell Control"
     ("s" "Start Agent Shell" agent-shell)
     ("k" "Kill Agent Shell" agent-shell-kill)
-    ("m" "Switch Model" agent-shell-set-session-model)]
+    ("m" "Switch Model" agent-shell-set-session-model)
+    ("M" "Switch Mode" agent-shell-set-session-mode)
+    ("c" "Cycle Mode" agent-shell-cycle-session-mode)
+    ("p" "Switch Agent Profile" agent-shell-aiderdesk-set-agent-profile)
+    ("a" "Autonomy Mode" agent-shell-aiderdesk-set-autonomy-mode)]
    ["Send Content"
     ("f" "Send File (C-u: choose)" agent-shell-send-file)
     ("r" "Send Region" agent-shell-send-region)]
+   ["History"
+    ("h" "Input History (M-<up>/<down> cycles)" agent-shell-aiderdesk-input-history)]
    ["Exhub"
     ("i" "Fix Grammar" agent-shell-fix-grammar)
     ("p" "Translate Region to Chinese (Posframe)" agent-shell-posframe-translate-region-zh)]
