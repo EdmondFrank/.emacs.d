@@ -52,3 +52,6 @@
 [submodule "site-lisp/appine"]
 	path = site-lisp/appine
 	url = https://github.com/chaoswork/appine
+[submodule "site-lisp/emacs-tramp-rpc"]
+	path = site-lisp/emacs-tramp-rpc
+	url = https://github.com/ArthurHeymans/emacs-tramp-rpc
