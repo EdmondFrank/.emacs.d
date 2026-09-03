@@ -19,8 +19,14 @@
 (require 'exhub-vault)
 (require 'blink-search-exhub)
 
-(setq exhub-fim-provider 'openai-compatible)
+
+;; Codestral is served by the ExHub Elixir backend (Exhub.Fim.Server) which
+;; runs the completion requests concurrently and pushes results back over the
+;; WebSocket, so typing never blocks on HTTP.
+(setq exhub-fim-provider 'codestral)
 (add-hook 'org-mode-hook #'exhub-vault-mode)
+
+(setopt pi-coding-agent-project-trust-policy 'default)
 
 (use-package gptel
   :load-path (lambda () (expand-file-name "site-lisp/gptel" user-emacs-directory))

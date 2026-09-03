@@ -21,7 +21,7 @@
 
 ;; (setq aider-args '("--linear-output" "--no-auto-commits" "--no-show-model-warnings" "--analytics-disable" "--auto-accept-architect" "--architect" "--yes-always" "--disable-playwright" "--model" "openai/kimi-k2.6" "--editor-model" "openai/mimo-v2.5-pro" "--weak-model" "openai/minimax-m2.5" "--editor-edit-format" "editor-diff" "--enable-context-compaction" "--map-tokens" "0"))
 
-(setq aider-args '("--no-auto-commits" "--no-show-model-warnings" "--auto-accept-architect" "--yes-always" "--model" "openai/deepseek-v4-pro" "--editor-model" "openai/deepseek-v4-flash" "--weak-model" "openai/deepseek-v4-flash" "--editor-edit-format" "editor-diff" "--edit-format" "diff" "--map-tokens" "0"))
+(setq aider-args '("--no-auto-commits" "--no-show-model-warnings" "--auto-accept-architect" "--yes-always" "--model" "openai/GLM-5.3-Flash" "--editor-model" "openai/deepseek-v4-flash" "--weak-model" "openai/deepseek-v4-flash" "--editor-edit-format" "editor-diff" "--edit-format" "diff" "--map-tokens" "0"))
 
 (setq aider-popular-models '("openai/glm-4_5"
                              "openai/glm-4.6"

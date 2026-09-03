@@ -17,11 +17,53 @@
   (setq agent-shell-show-config-icons nil) ; no icons in agent/menu prompts
   (setq agent-shell-header-style 'text) ; text-only header (skip SVG icon path)
   (setq agent-shell-show-usage-at-turn-end t)
-  (setq agent-shell-tool-use-expand-by-default t)
+  (setq agent-shell-tool-use-expand-by-default nil)
   (setq agent-shell-session-restore-verbosity 'full)
   (setq agent-shell-thought-process-expand-by-default t)
   (setq agent-shell-context-sources '(files region error))
+  (setq agent-shell-aiderdesk-environment
+        (agent-shell-make-environment-variables "AIDER_DESK_SSE_TIMEOUT_MS" "3600000"))
   )
+
+;;; Auto code suggestions in the agent-shell prompt (exhub-fim)
+;;
+;; `init-agent.el' is loaded before `init-exhub.el', which is what requires
+;; `exhub-fim', so the whole block waits for that feature to be present.
+;; Agent-shell buffers are comint transcripts, so suggestions are restricted
+;; to the live input prompt by `agent-shell-exhub-fim-block-p'.
+
+(with-eval-after-load 'exhub-fim
+  (defun agent-shell-exhub-fim-block-p ()
+    "Return non-nil when exhub-fim should not suggest anything.
+Only the live prompt awaiting input is worth completing, and never while
+the agent is streaming a response."
+    (not (and (fboundp 'shell-maker-point-at-last-prompt-p)
+              (shell-maker-point-at-last-prompt-p)
+              (or (not (fboundp 'shell-maker-busy))
+                  (not (shell-maker-busy))))))
+
+  (defun agent-shell-exhub-fim-enable ()
+    "Enable automatic exhub-fim suggestions in agent-shell buffers.
+`exhub-fim-auto-suggestion-block-functions' is made buffer-local so the
+prompt guard only applies here and keeps the global defaults."
+    (setq-local exhub-fim-auto-suggestion-block-functions
+                (cons #'agent-shell-exhub-fim-block-p
+                      (default-value
+                        'exhub-fim-auto-suggestion-block-functions)))
+    (exhub-fim-auto-suggestion-mode 1))
+
+  (add-hook 'agent-shell-mode-hook #'agent-shell-exhub-fim-enable)
+
+  ;; In agent-shell `C-b' is `backward-char' and TAB jumps to the next item,
+  ;; so the suggestion commands live under the free `C-c f' prefix.
+  (with-eval-after-load 'agent-shell
+    (let ((map (make-sparse-keymap)))
+      (define-key map (kbd "TAB") #'exhub-fim-accept-suggestion)
+      (define-key map (kbd "n") #'exhub-fim-next-suggestion)
+      (define-key map (kbd "p") #'exhub-fim-previous-suggestion)
+      (define-key map (kbd "m") #'exhub-fim-complete-with-minibuffer)
+      (define-key map (kbd "d") #'exhub-fim-dismiss-suggestion)
+      (define-key agent-shell-mode-map (kbd "C-c f") map))))
 
 ;;;###autoload
 (defun agent-shell-kill ()
