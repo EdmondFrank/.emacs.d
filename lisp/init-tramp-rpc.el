@@ -68,6 +68,7 @@ value if set, else its default value."
           ;; ~/.emacs.d/tramp-rpc/ and deploys it to the remote
           ;; ~/.cache/emacs/tramp-rpc/ automatically.
           (setq tramp-rpc-deploy-git-build-policy 'build)
+          (setq tramp-rpc-deploy-never-deploy-hosts '("^jms-"))
           (message "tramp-rpc: registered rpc method (tramp %s)"
                    tramp-version))))))))
 

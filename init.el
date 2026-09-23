@@ -41,6 +41,7 @@
 ;; Calls (package-initialize)
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
+(require 'init-envless)   ;; Import selected secrets from the envless vault
 
 (setq package-check-signature nil)
 
@@ -131,6 +132,7 @@
 (require 'init-docker)
 (require 'init-terraform)
 (require 'init-remote)
+(require 'init-tramp-rpc)
 ;; (require 'init-nix)
 (maybe-require-package 'nginx-mode)
 (maybe-require-package 'just-mode)
@@ -190,6 +192,10 @@
 
 ;; Allow access from emacsclient
 ;;----------------------------------------------------------------------------
+;; Use a stable socket path (default is under the GUI session's $TMPDIR,
+;; which differs in SSH sessions and breaks remote emacsclient).
+(setq server-auth-dir (expand-file-name "server/" user-emacs-directory))
+(setq server-socket-dir (expand-file-name "server/" user-emacs-directory))
 (add-hook 'after-init-hook
           (lambda ()
             (require 'server)
