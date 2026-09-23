@@ -23,8 +23,9 @@
   (add-hook 'python-mode-hook 'sanityinc/flymake-ruff-maybe-enable))
 
 (maybe-require-package 'ruff-format)
+(defvar ruff-fix-command "ruff" "Ruff executable for `ruff-fix-on-save-mode'.")
 (reformatter-define ruff-fix
-  :program ruff-format-command
+  :program ruff-fix-command
   :args (list "check" "--fix-only" "--stdin-filename" (or (buffer-file-name) input-file))
   :lighter " RuffFix")
 

@@ -8,6 +8,11 @@
   (setq-default eglot-extend-to-xref t)
   (setq eglot-code-action-indicator "✓")
   (setq eglot-code-action-indications '(eldoc-hint mode-line))
+  ;; Semantic tokens can cause font-lock lag/freezes; disable by default.
+  (when (fboundp 'eglot-semantic-tokens-mode)
+    (defun sanityinc/disable-eglot-semantic-tokens ()
+      (eglot-semantic-tokens-mode -1))
+    (add-hook 'eglot-managed-mode-hook #'sanityinc/disable-eglot-semantic-tokens))
   (maybe-require-package 'consult-eglot))
 
 

@@ -40,7 +40,7 @@
 (require-package 'session)
 
 (setq session-save-file (locate-user-emacs-file ".session"))
-(setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+\\'\\)")
+(setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+'\\)")
 (setq session-save-file-coding-system 'utf-8)
 
 (add-hook 'after-init-hook 'session-initialize)

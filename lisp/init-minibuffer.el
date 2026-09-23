@@ -9,17 +9,22 @@
   (when (maybe-require-package 'embark)
     (with-eval-after-load 'vertico
       (define-key vertico-map (kbd "C-c C-o") 'embark-export)
-      (define-key vertico-map (kbd "C-c C-c") 'embark-act)))
+      (define-key vertico-map (kbd "C-c C-c") 'embark-act)
+      (define-key vertico-map (kbd "C-c C-l") 'embark-collect)))
+
   ;; https://github.com/purcell/whole-line-or-region/issues/30#issuecomment-3388095018
   (with-eval-after-load 'embark
     (push 'embark--mark-target
           (alist-get 'whole-line-or-region-delete-region
                      embark-around-action-hooks)))
 
-  (when (maybe-require-package 'consult)
+  (when (maybe-require-package 'embark-consult)
+    (require 'embark-consult)
     (defmacro sanityinc/no-consult-preview (&rest cmds)
       `(with-eval-after-load 'consult
          (consult-customize ,@cmds :preview-key "M-P")))
+
+    (setq xref-show-xrefs-function 'consult-xref)
 
     (sanityinc/no-consult-preview
      consult-ripgrep
@@ -43,9 +48,7 @@
     (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
     (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
     (global-set-key [remap goto-line] 'consult-goto-line)
-
-    (when (maybe-require-package 'embark-consult)
-      (require 'embark-consult))))
+    ))
 
 (when (maybe-require-package 'marginalia)
   (add-hook 'after-init-hook 'marginalia-mode))
