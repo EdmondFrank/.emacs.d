@@ -94,19 +94,16 @@
 (use-package mcp
   :load-path (lambda () (expand-file-name "site-lisp/mcp.el" user-emacs-directory))
   :after gptel
+  ;; ExHub's MCP Hub is one unified gateway (streamable HTTP) fronting every
+  ;; upstream server (desktop, github, gitee, browser-use, brain, agent, ...).
+  ;; It exposes two meta-tools rather than one endpoint per server:
+  ;;   retrieve_tools : TF-IDF + Smart Decide search across all upstream tools
+  ;;   call_tools     : invoke a tool as "{server}__{tool}"
+  ;; Upstreams are managed via /mcp-hub/servers, so this list stays static.
+  ;; Port 9069 = ExHub HTTP endpoint (same host as the gptel backend above).
   :custom (mcp-hub-servers
-           `(("desktop" . (:url "http://localhost:3456/mcp/f3e0a28a-ef35-4a49-afbb-869b0373b389"))
-             ("ci" . (:url "http://localhost:3456/mcp/4b826692-5de4-4181-90cf-70349ce7eb7a"))
-             ("map" . (:url "http://localhost:3456/mcp/7da2cc57-ef32-4b80-88f3-7fc0012f9831"))
-             ("browser" . (:url "http://localhost:3456/mcp/81a7360b-817f-433d-8aa3-3f3c949ca8de"))
-             ("social" . (:url "http://localhost:3456/mcp/42c094b0-ea63-4b43-a2e3-67f18f07676c"))
-             ("gitee" . (:url "http://localhost:3456/mcp/28236dd1-1e25-4394-9ab2-0690a8bbba13"))
-             ("github" . (:url "http://localhost:3456/mcp/1447d840-6749-46ff-9a54-152d26b04c67"))
-             ("memory" . (:url "http://localhost:3456/mcp/2f74ee22-f6bd-4e91-9cec-eadad1a5f6e5"))
-             ("design" . (:url "http://localhost:3456/mcp/d0800506-2ad4-465a-b103-60a9d6858a47"))
-             ("agent" . (:url "http://localhost:3456/mcp/e8707d4e-f0b2-481f-a4d1-c7184a51f392"))
-             ("database". (:url "http://localhost:3456/mcp/986d5c79-2c8c-4f1d-a4e4-009344d2afa4"))
-             ))
+           `(("mcphub" . (:url "http://127.0.0.1:9069/mcp-hub/mcp"
+                                :timeout 120))))
   :config (require 'mcp-hub)
   :hook (after-init . mcp-hub-start-all-server))
 
