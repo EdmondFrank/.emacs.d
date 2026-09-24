@@ -28,6 +28,100 @@
 
 (setopt pi-coding-agent-project-trust-policy 'default)
 
+;;; ExHub model catalog ------------------------------------------------------
+;; The authoritative list of chat models is served by the ExHub backend at
+;; GET /llms (see lib/exhub/router.ex).  It is fetched asynchronously and we
+;; fall back to a local snapshot while the backend is still booting.
+
+(require 'json)
+(require 'cl-lib)
+
+(defconst exhub-llms-url "http://127.0.0.1:9069/llms"
+  "ExHub endpoint serving the model catalog.")
+
+;; gptel-specific capability metadata (not modelled by ExHub); merged onto the
+;; model names returned by /llms.
+(defconst exhub-model-capabilities
+  '((step3
+     :capabilities (tool-use json media)
+     :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
+                  "application/pdf" "text/plain" "text/csv" "text/html")
+     :context-window 32000)
+    (internvl3-78b
+     :capabilities (tool-use json media)
+     :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
+                  "application/pdf" "text/plain" "text/csv" "text/html")
+     :context-window 32000)
+    (glm-4_5v
+     :capabilities (tool-use json media)
+     :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
+                  "application/pdf" "text/plain" "text/csv" "text/html")
+     :context-window 64000)
+    (kimi-k2.5
+     :capabilities (tool-use json media)
+     :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
+                  "application/pdf" "text/plain" "text/csv" "text/html")
+     :context-window 200000))
+  "Per-model gptel capability plists merged onto the ExHub catalog.")
+
+;; Used only while the backend is unreachable (e.g. still starting up).
+(defconst exhub-model-fallback
+  '(step3 internvl3-78b glm-4_5v kimi-k2.5
+    claude-opus-4-5-20251101 claude-sonnet-4-20250514 claude-sonnet-4-5-20250929
+    claude-haiku-4-5-20251001 claude-opus-4-6 claude-sonnet-4-6
+    tngtech/deepseek-r1t2-chimera:free
+    minimax-m2 minimax-m2.1 minimax-m2.5 minimax-m2-preview
+    qwen3-235b-a22b-instruct-2507 qwen3-coder-480b-a35b-instruct
+    kimi-k2-instruct kimi-k2-thinking deepseek-v3_1
+    glm-4_5 glm-4.6 glm-4.7 glm-5 glm-5.1 glm-5-turbo
+    deepseek-v3.2 deepseek-v3.2-exp deepseek-v3_1-terminus gemini-2.5-pro
+    qwen3-next-80b-a3b-instruct qwen3-next-80b-a3b-thinking qwen3-235b-a22b)
+  "Model names used until the ExHub catalog can be fetched.")
+
+(defun exhub-models--with-capabilities (names)
+  "Return NAMES as gptel model entries, adding local capability plists."
+  (mapcar (lambda (name)
+            (let ((sym (if (stringp name) (intern name) name)))
+              (if-let ((props (alist-get sym exhub-model-capabilities)))
+                  (cons sym props)
+                sym)))
+          (delete-dups (append names nil))))
+
+(defun exhub-refresh-models (&optional callback)
+  "Fetch the model catalog from ExHub and update the gptel backend.
+The request is asynchronous; CALLBACK runs after a successful update."
+  (interactive)
+  (let ((attempt 0))
+    (cl-labels
+        ((fetch ()
+           (setq attempt (1+ attempt))
+           (url-retrieve
+            exhub-llms-url
+            (lambda (status)
+              (let ((ok nil))
+                (when (and (not (plist-get status :error))
+                           (buffer-live-p (current-buffer)))
+                  (goto-char (point-min))
+                  (when (re-search-forward "\r?\n\r?\n" nil t)
+                    (let* ((body (buffer-substring-no-properties (point) (point-max)))
+                           (json (let ((json-object-type 'alist)
+                                       (json-key-type 'symbol))
+                                   (json-read-from-string body)))
+                           (models (exhub-models--with-capabilities
+                                    (alist-get 'models json))))
+                      (when models
+                        (setf (gptel-backend-models gptel-backend)
+                              (gptel--process-models models))
+                        (setq ok t)
+                        (when callback (funcall callback))))))
+                (when (buffer-live-p (current-buffer))
+                  (kill-buffer (current-buffer)))
+                ;; Retry a few times while the backend is still booting.
+                (unless (or ok (>= attempt 5))
+                  (run-with-timer 8 nil (lambda () (fetch))))))
+            nil t)))
+      (fetch))))
+
 (use-package gptel
   :load-path (lambda () (expand-file-name "site-lisp/gptel" user-emacs-directory))
   :config
@@ -40,56 +134,11 @@
                    :stream t            ;for streaming responses
                    :protocol "http"
                    :key "edmondfrank" ;can be a function that returns the key
-                   :models '((step3
-                              :capabilities (tool-use json media)
-                              :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
-                                           "application/pdf" "text/plain" "text/csv" "text/html")
-                              :context-window 32000)
-                             (internvl3-78b
-                              :capabilities (tool-use json media)
-                              :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
-                                           "application/pdf" "text/plain" "text/csv" "text/html")
-                              :context-window 32000)
-                             (glm-4_5v
-                              :capabilities (tool-use json media)
-                              :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
-                                           "application/pdf" "text/plain" "text/csv" "text/html")
-                              :context-window 64000)
-                             (kimi-k2.5
-                              :capabilities (tool-use json media)
-                              :mime-types ("image/png" "image/jpeg" "image/webp" "image/heic" "image/heif"
-                                           "application/pdf" "text/plain" "text/csv" "text/html")
-                              :context-window 200000)
-                             claude-opus-4-5-20251101
-                             claude-sonnet-4-20250514
-                             claude-sonnet-4-5-20250929
-                             claude-haiku-4-5-20251001
-                             claude-opus-4-6
-                             claude-sonnet-4-6
-                             tngtech/deepseek-r1t2-chimera:free
-                             minimax-m2
-                             minimax-m2.1
-                             minimax-m2.5
-                             minimax-m2-preview
-                             qwen3-235b-a22b-instruct-2507
-                             qwen3-coder-480b-a35b-instruct
-                             kimi-k2-instruct
-                             kimi-k2-thinking
-                             deepseek-v3_1
-                             glm-4_5
-                             glm-4.6
-                             glm-4.7
-                             glm-5
-                             glm-5.1
-                             glm-5-turbo
-                             deepseek-v3.2
-                             deepseek-v3.2-exp
-                             deepseek-v3_1-terminus
-                             gemini-2.5-pro
-                             qwen3-next-80b-a3b-instruct
-                             qwen3-next-80b-a3b-thinking
-                             qwen3-235b-a22b)))
-  )
+                   ;; Seeded from `exhub-model-fallback'; `exhub-refresh-models'
+                   ;; replaces it with the catalog served by ExHub (GET /llms).
+                   :models (exhub-models--with-capabilities exhub-model-fallback)))
+  ;; ExHub may still be booting when gptel loads; sync the catalog once it is up.
+  (run-with-timer 5 nil #'exhub-refresh-models))
 
 (use-package mcp
   :load-path (lambda () (expand-file-name "site-lisp/mcp.el" user-emacs-directory))
