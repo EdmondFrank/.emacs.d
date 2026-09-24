@@ -128,18 +128,14 @@
 (global-set-key (kbd "C-c z") 'gptel-menu)
 (global-set-key (kbd "C-c x") 'gptel-agent)
 
-(use-package probe-search
-  :load-path (lambda () (expand-file-name "site-lisp/probe.el" user-emacs-directory))
-  :bind (("C-c s s" . probe-search)
-         ("C-c s q" . probe-query)
-         ("C-c s m" . probe-query-method)
-         ("C-c s c" . probe-query-class)
-         ("C-c s f" . probe-query-function))
+(use-package exhub-probe
+  :bind (("C-c s s" . exhub-probe-search)
+         ("C-c s q" . exhub-probe-at-point)
+         ("C-c s g" . exhub-probe-glob)
+         ("C-c s f" . exhub-probe-content))
   :config
-  (setq probe-search-command "probe"
-        probe-search-use-project-root t
-        probe-search-include-tests nil
-        probe-search-max-results 100))
+  (setq exhub-probe-include-tests nil
+        exhub-probe-max-results 100))
 
 (use-package ai-code
   :load-path (lambda () (expand-file-name "site-lisp/ai-code-interface.el" user-emacs-directory))
