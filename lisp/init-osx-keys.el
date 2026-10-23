@@ -4,7 +4,10 @@
 
 (when *is-a-mac*
   (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'none)
+  ;; Also expose Meta on Option/Alt: Cmd/Meta is unreliable when driving this
+  ;; Mac from Android via RustDesk, but Alt is forwarded reliably, so every
+  ;; M-... binding stays reachable with the physical Alt key.
+  (setq mac-option-modifier 'meta)
   ;; Make mouse wheel / trackpad scrolling less jerky
   (setq mouse-wheel-scroll-amount '(1
                                     ((shift) . 5)
