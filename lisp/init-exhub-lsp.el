@@ -51,7 +51,6 @@
 (setq exhub-lsp-enabled-modes '(elixir-mode elixir-ts-mode
                                 python-mode python-ts-mode
                                 js-mode js-ts-mode typescript-ts-mode
-                                ruby-mode ruby-ts-mode
                                 go-mode go-ts-mode
                                 rust-mode rust-ts-mode
                                 c-mode c-ts-mode c++-mode c++-ts-mode))
