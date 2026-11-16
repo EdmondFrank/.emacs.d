@@ -17,12 +17,26 @@
   (setq agent-shell-show-config-icons nil) ; no icons in agent/menu prompts
   (setq agent-shell-header-style 'text) ; text-only header (skip SVG icon path)
   (setq agent-shell-show-usage-at-turn-end t)
-  (setq agent-shell-tool-use-expand-by-default nil)
+  ;; Expanded tool sections stay readable because their bodies are capped
+  ;; at `agent-shell-fork-tool-max-height'; RET reveals the rest.
+  (setq agent-shell-tool-use-expand-by-default t)
   (setq agent-shell-session-restore-verbosity 'full)
   (setq agent-shell-thought-process-expand-by-default t)
   (setq agent-shell-context-sources '(files region error))
   (setq agent-shell-aiderdesk-environment
         (agent-shell-make-environment-variables "AIDER_DESK_SSE_TIMEOUT_MS" "3600000"))
+  ;; Fork overlay knobs (site-lisp/agent-shell/fork).  The overlay has to
+  ;; load after the package it advises: body height caps, streamed
+  ;; tool-output deltas, and the tool-output line width cap all hang off
+  ;; its advice.  Its four knobs are spelled out here rather than left to
+  ;; the defaults, because a `setq' against a renamed knob fails silently
+  ;; -- the old `agent-shell-tool-use-max-height' did exactly that.
+  (add-to-list 'load-path (expand-file-name "site-lisp/agent-shell/fork" user-emacs-directory))
+  (require 'agent-shell-fork)
+  (setq agent-shell-fork-tool-max-height 32) ; lines of an expanded tool body
+  (setq agent-shell-fork-thought-max-height 15) ; lines of an expanded thought body
+  (setq agent-shell-fork-tool-max-line-width 4000) ; characters in a tool-output line
+  (setq agent-shell-fork-tool-line-context 200) ; characters kept at each end of a cut
   )
 
 ;;; Auto code suggestions in the agent-shell prompt (exhub-fim)

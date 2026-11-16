@@ -11,12 +11,12 @@
 
 (require 'exhub-chat)
 (require 'exhub-translate)
-(require 'exhub-gitee)
 (require 'exhub-tool)
 (require 'exhub-agent)
 (require 'exhub-file)
 (require 'exhub-fim)
 (require 'exhub-vault)
+(require 'exhub-gitee-dashboard)
 (require 'blink-search-exhub)
 
 
@@ -171,10 +171,17 @@ The request is asynchronous; CALLBACK runs after a successful update."
   ;; Ensure prompts are updated if prompt files change
   (gptel-prompts-add-update-watchers))
 
+(global-set-key (kbd "C-c g d") 'exhub-gitee-dashboard)
 (global-set-key (kbd "C-c z") 'gptel-menu)
 (global-set-key (kbd "C-c x") 'gptel-agent)
 
 (use-package exhub-probe
+  ;; Local file in site-lisp/exhub (already on `load-path' above), not an
+  ;; ELPA package.  `use-package-always-ensure' is set globally, so
+  ;; without `:ensure nil' this form tries to install it and fails with
+  ;; "Package ‘exhub-probe’ is unavailable" -- which also skips :config,
+  ;; leaving `exhub-probe-max-results' at its default.
+  :ensure nil
   :bind (("C-c s s" . exhub-probe-search)
          ("C-c s q" . exhub-probe-at-point)
          ("C-c s g" . exhub-probe-glob)
