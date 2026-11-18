@@ -19,6 +19,15 @@
 (when (maybe-require-package 'daemons)
   (require 'daemons nil t))
 
+;; Upstream starts `uptimes' from `after-init-hook'; this fork has always left
+;; it off (unused mode-line widget).  Dropping the hook entry is cheaper than
+;; editing upstream's init.el.
+(setq after-init-hook
+      (seq-remove (lambda (fn)
+                    (and (consp fn)
+                         (string-match-p "\\buptimes\\b" (format "%S" fn))))
+                  after-init-hook))
+
 ;;--- packages with nothing to configure ---------------------------------
 (require-package 'auto-complete)
 (require-package 'vterm)

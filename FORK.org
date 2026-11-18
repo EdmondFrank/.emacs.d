@@ -1,0 +1,121 @@
+#+title: Fork notes: EdmondFrank/.emacs.d
+#+startup: overview
+#+options: toc:nil
+
+This configuration is a personal fork of
+[[https://github.com/purcell/emacs.d][purcell/emacs.d]].  It tracks upstream and adds a
+large personal layer on top.  These notes are the fork's manual: what diverges, how it
+is arranged, and how to pull upstream in without resolving anything by hand.
+
+The same rule and the same layout are used by the =agent-shell= submodule; see
+[[file:site-lisp/agent-shell/FORK.org][site-lisp/agent-shell/FORK.org]] for the original write-up of the
+pattern (and for how its ~overrides.eld~ seam manifest works).
+
+* The one rule
+
+  #+begin_quote
+  Fork code never edits an upstream file.
+  #+end_quote
+
+  Upstream-owned files stay byte-identical to =upstream/main=:
+
+  | File                                            | Kept identical |
+  |-------------------------------------------------+----------------|
+  | =init.el=, =early-init.el=                       | yes            |
+  | =lisp/init-*.el= (every upstream module)         | yes            |
+  | =test-startup.sh=, =.github/workflows/test.yml=  | yes            |
+
+  Everything the fork adds lives in =lisp/local/=, with two upstream-sanctioned entry
+  points next to the modules:
+
+  | File                          | Role                                              |
+  |-------------------------------+---------------------------------------------------|
+  | =lisp/init-local.el=           | loaded by upstream's own init.el at the very end  |
+  | =lisp/init-preload-local.el=   | loaded after init-elpa, before the module list    |
+
+  Because git never sees a fork edit inside an upstream file, ~git merge upstream/main~
+  has nothing to reconcile there: sync conflicts are not reduced, they are structurally
+  impossible.
+
+  The cost is *semantic* drift instead of textual conflict: upstream may rename a
+  variable or drop a function the fork's override still refers to.  That is what
+  [[file:scripts/check-upstream-purity.sh][scripts/check-upstream-purity.sh]] and the startup test are for.
+
+* Layout
+
+  #+begin_src text
+  lisp/
+    init-*.el                 upstream modules (pristine)
+    init-local.el             fork entry point: requires everything below, in order
+    init-preload-local.el     early settings: package archives, envless, server socket,
+                              `(provide 'init-minibuffer)' to suppress vertico
+    local/
+      my-<name>.el            a module upstream does not have (my-exhub, my-agent, ...)
+      my-<upstream-module>.el an adjustment to upstream lisp/init-<upstream-module>.el
+  scripts/
+    check-upstream-purity.sh  fails if any upstream file was modified
+    sync-upstream.sh          fetch, purity check, merge, startup test
+  #+end_src
+
+  The naming is the point: when upstream's =init-git.el= changes, the file to look at is
+  =lisp/local/my-git.el=.  Our files all start with =my-= and live in their own directory,
+  so ~require~ can never resolve to one of ours where upstream expects its own.
+
+* What diverges
+
+  | Upstream module       | Fork behaviour                                                | Where |
+  |-----------------------+---------------------------------------------------------------+-------|
+  | =init-minibuffer.el=   | not loaded: ivy/counsel/smex instead of vertico/embark/consult | =init-preload-local.el= |
+  | =init-editing-utils.el=| bidi/long-line off, fill column 120, =C--= is =negative-argument= | =my-editing-utils.el= |
+  | =init-flymake.el=      | flymake not enabled per buffer (flycheck/eglot do the checking) | =my-flymake.el= |
+  | =init-eglot.el=        | semantic tokens off, guarded for Emacs 29                     | =my-eglot.el= |
+  | =init-git.el=          | visit hunks in the worktree; magit#5600 workaround            | =my-git.el= |
+  | =init-org.el=          | GTD agenda files, org-modern/download/present/contacts, webp   | =my-org.el= |
+  | =init-sessions.el=     | =session= package kept, eager desktop restore                 | =my-sessions.el= |
+  | =init-windows.el=      | =C-x o/2/3= stay standard; enhanced splits on =C-x x/_/|=       | =my-windows.el= |
+  | =init-gui-frames.el=   | C-wheel keeps text scaling                                    | =my-gui-frames.el= |
+  | =init-osx-keys.el=     | Option is also Meta (RustDesk from Android)                    | =my-osx-keys.el= |
+  | =init-go.el=           | =.go= opens in go-mode + eglot, not go-ts-mode                 | =my-go.el= |
+  | =init-clojure.el=      | clojure-mode + cider, not clojure-ts-mode                      | =my-clojure.el= |
+  | =init-corfu.el=        | corfu-terminal stays off                                      | =my-corfu.el= |
+  | =init-dired.el=        | dired-rsync bindings                                          | =my-dired.el= |
+  | =init-dash.el=         | habitica                                                      | =my-dash.el= |
+  | =init-github.el=       | github-explorer                                               | =my-github.el= |
+  | =init-mmm.el=          | HTML tag propertizing hook (global, not buffer-local)          | =my-mmm.el= |
+  | =init-utils.el=        | =after-load= compatibility alias                               | =my-utils.el= |
+  | =init-ruby.el=         | eglot + rvm gemset activation                                  | =my-ruby.el= |
+  | =init.el= (trailing)   | kubel, yasnippet, vterm keys, display-time, =vc-handled-backends=, uptimes off | =my-misc.el= |
+
+* Sync with upstream
+
+  #+begin_src sh
+  scripts/sync-upstream.sh              # fetch, purity check, merge upstream/main, test
+  UPSTREAM_BRANCH=master scripts/sync-upstream.sh
+  #+end_src
+
+  The script refuses to merge while any upstream-owned file differs from the target ref,
+  so a merge either is a no-op or only touches fork-owned paths.  It finishes with
+  =./test-startup.sh=, the same smoke test upstream's CI runs.
+
+  Requirements for a conflict-free sync:
+
+  - =git config rerere.enabled true= and =git config merge.conflictstyle zdiff3= (already
+    set in this clone);
+  - upstream's active branch is =main=; =upstream/master= is stale. =master= keeps its
+    name here because that is what this clone has always used, but it tracks
+    =upstream/main=.
+
+* Adding a new feature
+
+  1. If it is a module upstream has no file for, create =lisp/local/my-<name>.el=, end it
+     with ~(provide 'my-<name>)~, and add a ~(require 'my-<name>)~ to the right section of
+     =lisp/init-local.el=.
+  2. If it changes upstream's behaviour, create =lisp/local/my-<upstream-module>.el= and
+     express the change with ~setq~, ~advice-add~, ~remove-hook~ or a key rebind *after*
+     that module loads (~with-eval-after-load~).
+  3. Never add a ~require~ for your module to =init.el=, and never "fix" an upstream
+     module in place -- =scripts/check-upstream-purity.sh= will fail.
+
+  To disable an upstream module wholesale, ~(provide 'init-<module>)~ in
+  =init-preload-local.el= makes upstream's ~(require 'init-<module>)~ a no-op (that is how
+  vertico is replaced by ivy).

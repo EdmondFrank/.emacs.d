@@ -82,3 +82,15 @@ snails.db
 /projectile.cache
 .cecli*
 .agent-shell/
+
+# --- fork additions (see FORK.org) ---------------------------------------
+.DS_Store
+/blink-search-kv.db
+# stray third-party checkouts used while developing, not part of the config
+/acp/
+/agent/
+/rime/
+/shell-maker/
+/tramp-rpc/
+/site-lisp/clutch/
+/site-lisp/tramp-rpc-head/
