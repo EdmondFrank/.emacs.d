@@ -4,7 +4,6 @@
 
 ;;; Basic ruby setup
 (require-package 'ruby-hash-syntax)
-(require-package 'eglot)
 
 (add-auto-mode 'ruby-mode
                "\\.rxml\\'"
@@ -17,7 +16,6 @@
  ruby-insert-encoding-magic-comment nil)
 
 (add-hook 'ruby-mode-hook 'subword-mode)
-;; (add-hook 'ruby-mode-hook 'eglot-ensure)
 
 (with-eval-after-load 'page-break-lines
   (add-to-list 'page-break-lines-modes 'ruby-mode))
@@ -40,8 +38,7 @@
         (call-interactively 'ruby-load-file)
       (save-some-buffers)
       (ruby-load-file buffer-file-name)))
-  (define-key inf-ruby-minor-mode-map [remap ruby-load-file] 'sanityinc/ruby-load-file)
-  (advice-add 'inf-ruby-console-auto :before #'rvm-activate-corresponding-ruby))
+  (define-key inf-ruby-minor-mode-map [remap ruby-load-file] 'sanityinc/ruby-load-file))
 
 
 

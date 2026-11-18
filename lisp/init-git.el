@@ -15,6 +15,7 @@
 
 (when (maybe-require-package 'magit)
   (setq-default magit-diff-refine-hunk 'all)
+  (setq-default magit-diff-visit-prefer-worktree t)
 
   (sanityinc/fullframe-mode 'magit-status-mode)
 
@@ -38,22 +39,7 @@
 
 
 (with-eval-after-load 'magit
-  (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up)
-
-  ;; Fix for magit/magit#5600: when `magit-diff-working-tree' produces a
-  ;; single-revision string spec, `magit-split-range' returns nil, causing
-  ;; FILENAME.~nil~ buffers.  Fall back to treating the spec as old-rev
-  ;; with {worktree} as new-rev.
-  (defun sanityinc/magit-diff-visit--sides-worktree-fix (orig)
-    (let ((spec (magit-diff--dwim))
-          (result (funcall orig)))
-      (if (and (stringp spec)
-               (null (caar result)))
-          (list (list (magit--abbrev-if-hash spec) (cadar result))
-                (list "{worktree}" (cadr (cadr result))))
-        result)))
-  (advice-add 'magit-diff-visit--sides :around
-              'sanityinc/magit-diff-visit--sides-worktree-fix))
+  (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up))
 
 (maybe-require-package 'magit-todos)
 

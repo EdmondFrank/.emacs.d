@@ -33,12 +33,6 @@
  truncate-lines nil
  truncate-partial-width-windows nil)
 
-(setq-default bidi-display-reordering nil)
-(setq bidi-inhibit-bpa t
-      long-line-threshold 1000
-      large-hscroll-threshold 1000
-      syntax-wholeline-max 1000)
-
 (add-hook 'after-init-hook 'delete-selection-mode)
 
 (add-hook 'after-init-hook 'global-auto-revert-mode)
@@ -101,7 +95,6 @@
 (when (boundp 'display-fill-column-indicator)
   (setq-default indicate-buffer-boundaries 'left)
   (setq-default display-fill-column-indicator-character ?┊)
-  (setq-default display-fill-column-indicator-column 120)
   (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode))
 
 
@@ -272,7 +265,8 @@ ORIG is the advised function, which is called with its ARGS."
 
 
 (when (maybe-require-package 'expreg)
-  (global-set-key (kbd "C-=") 'expreg-expand))
+  (global-set-key (kbd "C-=") 'expreg-expand)
+  (global-set-key (kbd "C--") 'expreg-contract))
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here

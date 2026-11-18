@@ -22,16 +22,10 @@
 
 ;;; Code:
 
-;; Enable external image conversion (e.g. webp) for inline preview.
-;; Emacs's built-in webp support may be unavailable at compile time, in
-;; which case the external converter (ffmpeg) handles webp images.
-(setq image-use-external-converter t)
-
 (when *is-a-mac*
   (maybe-require-package 'grab-mac-link))
 
 (maybe-require-package 'org-cliplink)
-(maybe-require-package 'org-download)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -311,10 +305,10 @@ typical word processor."
 (when (and *is-a-mac* (file-directory-p "/Applications/org-clock-statusbar.app"))
   (add-hook 'org-clock-in-hook
             (lambda () (call-process "/usr/bin/osascript" nil 0 nil "-e"
-                                     (concat "tell application \"org-clock-statusbar\" to clock in \"" org-clock-current-task "\""))))
+                                (concat "tell application \"org-clock-statusbar\" to clock in \"" org-clock-current-task "\""))))
   (add-hook 'org-clock-out-hook
             (lambda () (call-process "/usr/bin/osascript" nil 0 nil "-e"
-                                     "tell application \"org-clock-statusbar\" to clock out"))))
+                                "tell application \"org-clock-statusbar\" to clock out"))))
 
 
 
@@ -337,8 +331,6 @@ typical word processor."
 (with-eval-after-load 'org-agenda
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
 
-
-(require-package 'org-modern)
 
 ;; ;; Show iCal calendars in the org agenda
 ;; (when (and *is-a-mac* (require 'org-mac-iCal nil t))
@@ -392,32 +384,6 @@ typical word processor."
       (sql . t)
       (sqlite . t)))))
 
-(setq org-agenda-files (quote ("~/GTD/todos.org")))
 
-(use-package org-contacts
-  :init (require 'org-contacts)
-  :custom
-  (org-contacts-files
-   (file-expand-wildcards "~/GTD/contacts.org")))
-
-(require-package 'org-present)
-(with-eval-after-load "org-present"
-  ;; Set how large the characters should be
-  (setq org-present-text-scale 3)
-  (add-hook 'org-present-mode-hook
-            (lambda ()
-              (org-present-big)
-              (org-display-inline-images)
-              (org-present-hide-cursor)
-              (org-present-read-only)))
-  (add-hook 'org-present-mode-quit-hook
-            (lambda ()
-              (org-present-small)
-              (org-remove-inline-images)
-              (org-present-show-cursor)
-              (org-present-read-write))))
-;; Drag-and-drop to `dired`
-(add-hook 'dired-mode-hook 'org-download-enable)
-(add-hook 'org-mode-hook 'org-modern-mode)
 (provide 'init-org)
 ;;; init-org.el ends here

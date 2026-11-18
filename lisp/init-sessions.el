@@ -5,10 +5,6 @@
 ;; save a list of open files in ~/.emacs.d/.emacs.desktop
 (setq desktop-path (list user-emacs-directory)
       desktop-auto-save-timeout 600)
-
-(setq desktop-restore-frame nil
-      desktop-restore-eager 2
-      desktop-lazy-verbose nil)
 (desktop-save-mode 1)
 
 (defun sanityinc/desktop-time-restore (orig &rest args)
@@ -36,14 +32,6 @@
 
 (setq-default history-length 1000)
 (add-hook 'after-init-hook 'savehist-mode)
-
-(require-package 'session)
-
-(setq session-save-file (locate-user-emacs-file ".session"))
-(setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+'\\)")
-(setq session-save-file-coding-system 'utf-8)
-
-(add-hook 'after-init-hook 'session-initialize)
 
 ;; save a bunch of variables to the desktop file
 ;; for lists specify the len of the maximal saved data also

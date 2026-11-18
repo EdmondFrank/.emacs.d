@@ -2,8 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-
-(define-obsolete-function-alias 'after-load 'with-eval-after-load "")
 (defun sanityinc/display-buffer-full-frame (buffer alist)
   "If it's not visible, display buffer full-frame, saving the prior window config.
 The saved config will be restored when the window is quit later.
@@ -24,6 +22,7 @@ BUFFER and ALIST are as for `display-buffer-full-frame'."
       (set-window-configuration to-restore))))
 
 (advice-add 'quit-window :around 'sanityinc/maybe-restore-window-configuration)
+
 (defmacro sanityinc/fullframe-mode (mode)
   "Configure buffers that open in MODE to display in full-frame."
   `(add-to-list 'display-buffer-alist

@@ -26,10 +26,11 @@
   (with-eval-after-load 'corfu
     (corfu-popupinfo-mode))
 
-  ;; ;; Make Corfu also work in terminals, without disturbing usual behaviour in GUI
-  ;; (when (maybe-require-package 'corfu-terminal)
-  ;;   (with-eval-after-load 'corfu
-  ;;     (corfu-terminal-mode)))
+  ;; Make Corfu also work in terminals, without disturbing usual behaviour in GUI
+  (when (version< emacs-version "31")
+    (when (maybe-require-package 'corfu-terminal)
+      (with-eval-after-load 'corfu
+        (corfu-terminal-mode))))
 
   ;; TODO: https://github.com/jdtsmith/kind-icon
   )
